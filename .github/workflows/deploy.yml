@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Configure public npm registry
+        run: echo "registry=https://registry.npmjs.org" > .npmrc
+
       - name: Install dependencies
         run: npm install
 
