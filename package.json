@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist -r git@gecgithub01.walmart.com:r0d088m/Explore.git -b gh-pages"
+    "deploy": "npm run build && gh-pages -d dist -r https://github.com/Neptronious/WRMC.git -b gh-pages",
+    "deploy:internal": "npm run build && gh-pages -d dist -r git@gecgithub01.walmart.com:r0d088m/Explore.git -b gh-pages"
   },
   "dependencies": {
     "react": "^18.2.0",

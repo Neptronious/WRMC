@@ -8,7 +8,7 @@ export default defineConfig({
       exclude: /src\/components\/ld\/.*/,
     }),
   ],
-  base: '/pages/r0d088m/Explore/',
+  base: '/WRMC/',
   server: {
     port: 3099,
   },
