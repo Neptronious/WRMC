@@ -8,7 +8,9 @@ export default defineConfig({
       exclude: /src\/components\/ld\/.*/,
     }),
   ],
-  base: '/WRMC/',
+  // Vercel serves from root (/), GitHub Pages needs /WRMC/
+  // Switch back to '/WRMC/' if re-deploying to GitHub Pages
+  base: '/',
   server: {
     port: 3099,
   },
