@@ -1,0 +1,1 @@
+{"root":["./src/activitypage.tsx","./src/app.tsx","./src/creditcardhomepage.tsx","./src/linkcardpage.tsx","./src/moneytransferpage.tsx","./src/paybillpage.tsx","./src/paymentconfirmationpage.tsx","./src/verifyphonepage.tsx","./src/main.tsx","./src/utils/store.tsx","./src/utils/theming.tsx"],"errors":true,"version":"5.9.3"}
