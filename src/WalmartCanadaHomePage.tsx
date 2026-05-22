@@ -34,6 +34,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
     'walmart rewards mastercard',
     'walmart rewards credit card',
     'walmart credit card',
+    'rewards credit card',
   ];
 
   const handleSearch = (query: string) => {
