@@ -148,9 +148,8 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             gap: 6,
           }}
         >
-          {/* Left group: phone icon + text + pipe + postal code */}
+          {/* Left group: text + pipe + postal code */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
-            <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>📱</span>
             <span
               style={{
                 fontSize: 14,

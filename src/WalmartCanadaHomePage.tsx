@@ -27,8 +27,17 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
   const [activeNav, setActiveNav] = React.useState('shop');
   const [searchQuery, setSearchQuery] = React.useState('');
 
+  const PROMO_KEYWORDS = [
+    'credit card',
+    'walmart rewards',
+    'walmart rewards master card',
+    'walmart rewards mastercard',
+    'walmart rewards credit card',
+    'walmart credit card',
+  ];
+
   const handleSearch = (query: string) => {
-    if (query.trim().toLowerCase() === 'walmart rewards') {
+    if (PROMO_KEYWORDS.includes(query.trim().toLowerCase())) {
       onPromoClick();
     }
   };
@@ -204,7 +213,16 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
       <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 80, paddingTop: 24 }}>
         <div style={{ maxWidth: 600, margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-          {/* Promotional Cards Image (WRMC) — clickable, navigates to credit card promo page */}
+          {/* Rewards image — shown first */}
+          <div style={{ width: '100%', paddingLeft: 16, paddingRight: 16 }}>
+            <img
+              src={images.rewards}
+              alt="Rewards Content"
+              style={{ width: '100%', display: 'block', height: 'auto' }}
+            />
+          </div>
+
+          {/* Promotional Cards Image (WRMC) — shown second, clickable */}
           <div
             style={{ width: '100%', paddingLeft: 16, paddingRight: 16, cursor: 'pointer' }}
             onClick={onPromoClick}
@@ -214,15 +232,6 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             <img
               src={images.promotional}
               alt="Promotional Cards"
-              style={{ width: '100%', display: 'block', height: 'auto' }}
-            />
-          </div>
-
-          {/* Content/Rewards Card Image */}
-          <div style={{ width: '100%', paddingLeft: 16, paddingRight: 16 }}>
-            <img
-              src={images.rewards}
-              alt="Rewards Content"
               style={{ width: '100%', display: 'block', height: 'auto' }}
             />
           </div>
