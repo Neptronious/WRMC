@@ -221,15 +221,11 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                   >
                     Select date
                   </label>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <input
-                      id="payment-date"
-                      type="date"
-                      value={toInputValue(paymentDate)}
-                      min={toInputValue(new Date())}
-                      onChange={handleDateChange}
+                  {/* Overlay pattern: styled display div + invisible native date input on top */}
+                  <div style={{ position: 'relative' }}>
+                    {/* Visible styled display */}
+                    <div
                       style={{
-                        flex: 1,
                         border: '1px solid #d1d5db',
                         borderRadius: 6,
                         padding: '10px 12px',
@@ -237,7 +233,34 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                         color: '#2e2f32',
                         fontFamily: FONT,
                         backgroundColor: '#ffffff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        pointerEvents: 'none',
+                      }}
+                    >
+                      <span>{formatDisplayDate(paymentDate)}</span>
+                      <span style={{ color: '#74767c', display: 'flex', alignItems: 'center' }}>
+                        <LivingDesignFontIcon name="Calendar" />
+                      </span>
+                    </div>
+                    {/* Invisible native date input positioned over the display */}
+                    <input
+                      id="payment-date"
+                      type="date"
+                      value={toInputValue(paymentDate)}
+                      min={toInputValue(new Date())}
+                      onChange={handleDateChange}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        opacity: 0,
                         cursor: 'pointer',
+                        border: 'none',
+                        padding: 0,
+                        margin: 0,
                       }}
                     />
                   </div>

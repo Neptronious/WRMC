@@ -92,8 +92,8 @@ export default function App() {
 
       <Route path="/credit-card-home" element={
         <CreditCardHomePage
-          onBack={() => navigate(-1)}
-          onContinue={() => navigate(-1)}
+          onBack={() => navigate('/')}
+          onContinue={() => navigate('/')}
           onPayNow={() => navigate('/pay-bill')}
           onNavSelect={handleNavSelect}
           paymentMade={paymentMade}
@@ -102,7 +102,7 @@ export default function App() {
 
       <Route path="/pay-bill" element={
         <PayBillPage
-          onBack={() => navigate(-1)}
+          onBack={() => navigate('/credit-card-home')}
           onContinue={(amount, date) => { setPaymentMade(true); setLastPayment({ amount, date }); navigate('/payment-confirmation'); }}
         />
       } />
@@ -118,14 +118,14 @@ export default function App() {
 
       <Route path="/activity" element={
         <ActivityPage
-          onBack={() => navigate(-1)}
+          onBack={() => navigate('/credit-card-home')}
           onNavSelect={handleNavSelect}
         />
       } />
 
       <Route path="/rewards" element={
         <RewardsPage
-          onBack={() => navigate(-1)}
+          onBack={() => navigate('/credit-card-home')}
           onNavSelect={handleNavSelect}
           onViewAll={() => navigate('/rewards-activity')}
         />
@@ -133,14 +133,14 @@ export default function App() {
 
       <Route path="/rewards-activity" element={
         <RewardsActivityPage
-          onBack={() => navigate(-1)}
+          onBack={() => navigate('/rewards')}
           onNavSelect={handleNavSelect}
         />
       } />
 
       <Route path="/manage" element={
         <ManagePage
-          onBack={() => navigate(-1)}
+          onBack={() => navigate('/credit-card-home')}
           onNavSelect={handleNavSelect}
         />
       } />

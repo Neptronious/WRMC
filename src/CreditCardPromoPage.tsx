@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Button } from './components/ld/Button';
+import { IconButton } from './components/ld/IconButton';
+import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 import AuthSignInSheet from './AuthSignInSheet';
 import AuthPasswordSheet from './AuthPasswordSheet';
+
+const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)';
 
 interface CreditCardPromoPageProps {
   onBack: () => void;
@@ -58,6 +62,60 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#ffffff' }}>
+
+      {/* ── Header bar: back + search + cart ─────────────────────────────────── */}
+      <div
+        style={{
+          backgroundColor: '#0053e2',
+          padding: '8px 12px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          flexShrink: 0,
+        }}
+      >
+        <IconButton a11yLabel="Go back" variant="round" size="small" color="white" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+
+        {/* Search bar */}
+        <div style={{ flex: 1, position: 'relative' }}>
+          <span
+            style={{
+              position: 'absolute',
+              left: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#74767c',
+              display: 'flex',
+              alignItems: 'center',
+              pointerEvents: 'none',
+            }}
+          >
+            <LivingDesignFontIcon name="Search" />
+          </span>
+          <input
+            type="text"
+            placeholder="Search everything at Walmart"
+            style={{
+              width: '100%',
+              padding: '9px 12px 9px 34px',
+              border: 'none',
+              borderRadius: 4,
+              fontSize: 14,
+              fontFamily: FONT,
+              color: '#2e2f32',
+              backgroundColor: '#ffffff',
+              boxSizing: 'border-box',
+              outline: 'none',
+            }}
+          />
+        </div>
+
+        <IconButton a11yLabel="Cart" variant="round" size="small" color="white" onClick={() => {}}>
+          <LivingDesignFontIcon name="Cart" />
+        </IconButton>
+      </div>
 
       {/* ── Header Image ─────────────────────────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0 }}>

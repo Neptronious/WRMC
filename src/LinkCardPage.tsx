@@ -210,15 +210,17 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
             {/* ── Form fields ──────────────────────────────────── */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-              {/* Card type selector */}
-              <Select
-                label="What are you using to link your account"
-                value={cardType}
-                onChange={(e) => setCardType(e.target.value)}
-              >
-                <option value="walmart-rewards-mastercard">Walmart Rewards Mastercard</option>
-                <option value="temporary-shopping-pass">Temporary shopping pass</option>
-              </Select>
+              {/* Card type selector — hidden per design */}
+              <div style={{ display: 'none' }}>
+                <Select
+                  label="What are you using to link your account"
+                  value={cardType}
+                  onChange={(e) => setCardType(e.target.value)}
+                >
+                  <option value="walmart-rewards-mastercard">Walmart Rewards Mastercard</option>
+                  <option value="temporary-shopping-pass">Temporary shopping pass</option>
+                </Select>
+              </div>
 
               {/* Card Number */}
               <TextField
