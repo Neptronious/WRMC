@@ -54,7 +54,6 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
   // Image paths — header/applyCard/content from credit-card-promo, navbar shared with home
   const BASE = import.meta.env.BASE_URL;
   const images = {
-    header:    `${BASE}credit-card-promo/header.png`,
     applyCard: `${BASE}credit-card-promo/apply-card.png`,
     content:   `${BASE}credit-card-promo/content.png`,
     navbar:    `${BASE}walmart-canada/navbar.png`,
@@ -80,7 +79,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
           </IconButton>
 
           {/* Pill-shaped search bar */}
-          <div style={{ flex: 1, position: 'relative' }}>
+          <div style={{ flex: 1, position: 'relative', minWidth: 0 }}>
             <span
               style={{
                 position: 'absolute',
@@ -101,7 +100,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
               placeholder="Search everything at Walmart"
               style={{
                 width: '100%',
-                padding: '9px 36px 9px 36px',
+                padding: '9px 12px 9px 36px',
                 border: 'none',
                 borderRadius: 9999,
                 fontSize: 14,
@@ -114,9 +113,30 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             />
           </div>
 
-          <IconButton a11yLabel="Cart" variant="round" size="small" color="white" onClick={() => {}}>
-            <LivingDesignFontIcon name="Cart" />
-          </IconButton>
+          {/* Cart icon — inline SVG so it always renders */}
+          <button
+            type="button"
+            aria-label="Cart"
+            onClick={() => {}}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 4,
+              flexShrink: 0,
+              lineHeight: 1,
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="9" cy="21" r="1" fill="currentColor" stroke="none" />
+              <circle cx="20" cy="21" r="1" fill="currentColor" stroke="none" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+          </button>
         </div>
 
         {/* Row 2: delivery / pickup selector */}
@@ -130,10 +150,10 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
         >
           {/* Left group: phone icon + text + pipe + postal code */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
-            <span style={{ fontSize: 16, flexShrink: 0, lineHeight: 1 }}>📱</span>
+            <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>📱</span>
             <span
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 color: '#ffffff',
                 fontFamily: FONT,
                 whiteSpace: 'nowrap',
@@ -147,7 +167,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
               style={{
                 color: 'rgba(255,255,255,0.4)',
                 flexShrink: 0,
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: 300,
                 lineHeight: 1,
               }}
@@ -156,7 +176,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             </span>
             <span
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 color: '#ffffff',
                 fontFamily: FONT,
                 fontWeight: 700,
@@ -173,17 +193,6 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
           </span>
         </div>
 
-      </div>
-
-      {/* ── Header Image ─────────────────────────────────────────────────────── */}
-      <div style={{ width: '100%', flexShrink: 0 }}>
-        <div style={{ maxWidth: 600, margin: '0 auto', width: '100%' }}>
-          <img
-            src={images.header}
-            alt="Credit Card Promo Header"
-            style={{ width: '100%', display: 'block', height: 'auto' }}
-          />
-        </div>
       </div>
 
       {/* ── Scrollable Content Area ──────────────────────────────────────────── */}
