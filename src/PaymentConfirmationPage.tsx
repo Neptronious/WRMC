@@ -13,22 +13,22 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 interface PaymentConfirmationPageProps {
   onBack: () => void;
   onNavSelect: (key: string) => void;
+  amount?: string;
+  paymentDate?: string;
 }
-
-// ── Dummy data ────────────────────────────────────────────────────────────────
-
-const SUMMARY = [
-  { label: 'Amount',             value: '$542.30'       },
-  { label: 'Date',               value: 'Apr 21, 2026'  },
-  { label: 'Payment method',     value: 'Chase ••••4521' },
-  { label: 'Confirmation number',value: 'WMT-PAY-284739' },
-];
 
 const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)';
 
 // ── PaymentConfirmationPage ───────────────────────────────────────────────────
 
-export default function PaymentConfirmationPage({ onBack, onNavSelect }: PaymentConfirmationPageProps) {
+export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSelect, amount, paymentDate }: PaymentConfirmationPageProps) {
+  const SUMMARY = [
+    { label: 'Amount',              value: amount      ?? '$542.30'        },
+    { label: 'Date',                value: paymentDate ?? 'Today'          },
+    { label: 'Payment method',      value: 'Chase ••••4521'                },
+    { label: 'Confirmation number', value: 'WMT-PAY-284739'               },
+  ];
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#ffffff' }}>
 
@@ -70,14 +70,14 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect }: Payment
         </h1>
       </div>
 
-      {/* ── Body ────────────────────────────────────────────────── */}
+      {/* ── Scrollable body ─────────────────────────────────────── */}
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <Container>
           <div
             style={{
               maxWidth: 600,
               margin: '0 auto',
-              padding: '48px 0 40px',
+              padding: '48px 0 32px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -173,15 +173,24 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect }: Payment
               </p>
             </div>
 
-            {/* Return button */}
-            <div style={{ width: '100%', marginTop: 8 }}>
-              <Button variant="primary" isFullWidth size="medium" onClick={onBack}>
-                Return to credit card home
-              </Button>
-            </div>
-
           </div>
         </Container>
+      </div>
+
+      {/* ── Fixed footer: Return button ──────────────────────────── */}
+      <div
+        style={{
+          flexShrink: 0,
+          backgroundColor: '#ffffff',
+          borderTop: '1px solid #e5e7eb',
+          padding: '16px 16px 24px',
+        }}
+      >
+        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+          <Button variant="primary" isFullWidth size="medium" onClick={onBack}>
+            Return to credit card home
+          </Button>
+        </div>
       </div>
 
     </div>

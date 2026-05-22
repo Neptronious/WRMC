@@ -265,24 +265,6 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                           paddingBottom: 12,
                         }}
                       >
-                        {/* Type icon */}
-                        <div
-                          style={{
-                            width: 40,
-                            height: 40,
-                            borderRadius: '50%',
-                            backgroundColor: rewardIconBg(rw.type),
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0,
-                          }}
-                        >
-                          <span style={{ color: rewardIconColor(rw.type) }}>
-                            {rewardIcon(rw.type)}
-                          </span>
-                        </div>
-
                         {/* Title + subtitle */}
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <p

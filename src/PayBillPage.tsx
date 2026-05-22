@@ -15,7 +15,7 @@ import { Divider } from './components/ld/Divider';
 
 interface PayBillPageProps {
   onBack: () => void;
-  onContinue: () => void;
+  onContinue: (amount: string, date: string) => void;
 }
 
 // ── Dummy data ────────────────────────────────────────────────────────────────
@@ -223,6 +223,7 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                       id="payment-date"
                       type="date"
                       value={toInputValue(paymentDate)}
+                      min={toInputValue(new Date())}
                       onChange={handleDateChange}
                       style={{
                         flex: 1,
@@ -266,14 +267,11 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                     style={{
                       width: 44,
                       height: 44,
-                      borderRadius: '50%',
-                      backgroundColor: '#eff6ff',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                       overflow: 'hidden',
-                      padding: 6,
                     }}
                   >
                     <img
@@ -347,7 +345,14 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
             variant="primary"
             isFullWidth
             size="medium"
-            onClick={onContinue}
+            onClick={() => {
+              const resolvedAmount =
+                selectedAmount === 'minimum' ? fmt(MINIMUM_BAL) :
+                selectedAmount === 'statement' ? fmt(STATEMENT_BAL) :
+                selectedAmount === 'total' ? fmt(TOTAL_BALANCE) :
+                otherAmount ? `$${parseFloat(otherAmount).toFixed(2)}` : '$0.00';
+              onContinue(resolvedAmount, formatDisplayDate(paymentDate));
+            }}
           >
             Continue
           </Button>

@@ -50,6 +50,7 @@ export default function App() {
 
   const navigate = useNavigate();
   const [paymentMade, setPaymentMade] = useState(false);
+  const [lastPayment, setLastPayment] = useState<{ amount: string; date: string } | null>(null);
 
   // ── Apply card flow state ──────────────────────────────────────────────────
   const [applyEmail, setApplyEmail] = useState('');
@@ -102,7 +103,7 @@ export default function App() {
       <Route path="/pay-bill" element={
         <PayBillPage
           onBack={() => navigate('/credit-card-home')}
-          onContinue={() => { setPaymentMade(true); navigate('/payment-confirmation'); }}
+          onContinue={(amount, date) => { setPaymentMade(true); setLastPayment({ amount, date }); navigate('/payment-confirmation'); }}
         />
       } />
 
@@ -110,6 +111,8 @@ export default function App() {
         <PaymentConfirmationPage
           onBack={() => navigate('/credit-card-home')}
           onNavSelect={handleNavSelect}
+          amount={lastPayment?.amount}
+          paymentDate={lastPayment?.date}
         />
       } />
 

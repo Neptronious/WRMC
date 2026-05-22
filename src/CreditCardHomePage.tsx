@@ -427,15 +427,23 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                 </div>
 
                 <div style={{ margin: '12px -16px -4px', borderTop: '1px solid #e5e7eb', paddingTop: 12, textAlign: 'center' }}>
-                  <LinkButton
+                  <button
                     type="button"
-                    size="small"
-                    color="default"
-                    trailing={<LivingDesignFontIcon name="ChevronRight" />}
                     onClick={() => onNavSelect('activity')}
+                    style={{
+                      all: 'unset',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 4,
+                      cursor: 'pointer',
+                      fontSize: 14,
+                      color: '#2e2f32',
+                      fontFamily: FONT,
+                    }}
                   >
-                    View transactions &amp; statements
-                  </LinkButton>
+                    <span style={{ textDecoration: 'underline' }}>View transactions &amp; statements</span>
+                    <LivingDesignFontIcon name="ArrowRight" />
+                  </button>
                 </div>
               </CardContent>
             </Card>
