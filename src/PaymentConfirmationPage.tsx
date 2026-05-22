@@ -162,7 +162,7 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSel
               <p
                 style={{
                   margin: '12px 0 0',
-                  fontSize: 13,
+                  fontSize: 15,
                   color: '#74767c',
                   lineHeight: 1.6,
                   fontFamily: FONT,

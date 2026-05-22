@@ -47,7 +47,10 @@ function fromInputValue(s: string): Date {
 }
 
 function formatDisplayDate(d: Date): string {
-  return d.toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  const y = d.getFullYear();
+  return `${m}/${day}/${y}`;
 }
 
 // ── PayBillPage ───────────────────────────────────────────────────────────────
@@ -238,9 +241,6 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                       }}
                     />
                   </div>
-                  <p style={{ margin: 0, fontSize: 13, color: '#74767c', fontFamily: FONT }}>
-                    Selected: <strong>{formatDisplayDate(paymentDate)}</strong>
-                  </p>
                 </div>
               </CardContent>
             </Card>

@@ -85,15 +85,15 @@ export default function App() {
 
       <Route path="/verify-phone" element={
         <VerifyPhonePage
-          onBack={() => navigate('/link-card')}
+          onBack={() => navigate(-1)}
           onContinue={() => navigate('/credit-card-home')}
         />
       } />
 
       <Route path="/credit-card-home" element={
         <CreditCardHomePage
-          onBack={() => navigate('/')}
-          onContinue={() => navigate('/')}
+          onBack={() => navigate(-1)}
+          onContinue={() => navigate(-1)}
           onPayNow={() => navigate('/pay-bill')}
           onNavSelect={handleNavSelect}
           paymentMade={paymentMade}
@@ -102,7 +102,7 @@ export default function App() {
 
       <Route path="/pay-bill" element={
         <PayBillPage
-          onBack={() => navigate('/credit-card-home')}
+          onBack={() => navigate(-1)}
           onContinue={(amount, date) => { setPaymentMade(true); setLastPayment({ amount, date }); navigate('/payment-confirmation'); }}
         />
       } />
@@ -118,14 +118,14 @@ export default function App() {
 
       <Route path="/activity" element={
         <ActivityPage
-          onBack={() => navigate('/credit-card-home')}
+          onBack={() => navigate(-1)}
           onNavSelect={handleNavSelect}
         />
       } />
 
       <Route path="/rewards" element={
         <RewardsPage
-          onBack={() => navigate('/credit-card-home')}
+          onBack={() => navigate(-1)}
           onNavSelect={handleNavSelect}
           onViewAll={() => navigate('/rewards-activity')}
         />
@@ -133,21 +133,21 @@ export default function App() {
 
       <Route path="/rewards-activity" element={
         <RewardsActivityPage
-          onBack={() => navigate('/rewards')}
+          onBack={() => navigate(-1)}
           onNavSelect={handleNavSelect}
         />
       } />
 
       <Route path="/manage" element={
         <ManagePage
-          onBack={() => navigate('/credit-card-home')}
+          onBack={() => navigate(-1)}
           onNavSelect={handleNavSelect}
         />
       } />
 
       <Route path="/credit-card-promo" element={
         <CreditCardPromoPage
-          onBack={() => navigate('/')}
+          onBack={() => navigate(-1)}
           onNavSelect={handleNavSelect}
           onLinkCard={() => navigate('/link-card')}
           onApplyCard={() => navigate('/apply-card')}
@@ -231,7 +231,7 @@ export default function App() {
 
       <Route path="/temporary-shopping-pass" element={
         <TemporaryShoppingPassPage
-          onBack={() => navigate('/apply-card/approved')}
+          onBack={() => navigate(-1)}
           onActivateCard={() => navigate('/activate-card')}
         />
       } />

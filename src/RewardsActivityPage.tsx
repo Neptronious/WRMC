@@ -251,24 +251,6 @@ export default function RewardsActivityPage({ onBack, onNavSelect }: RewardsActi
                         padding: '14px 16px',
                       }}
                     >
-                      {/* Type icon */}
-                      <div
-                        style={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: '50%',
-                          backgroundColor: txIconBg(tx.type),
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <span style={{ color: txIconColor(tx.type) }}>
-                          {txIcon(tx.type)}
-                        </span>
-                      </div>
-
                       {/* Title + date */}
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <p
