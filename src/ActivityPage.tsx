@@ -7,7 +7,6 @@ import { Button } from './components/ld/Button';
 import { Checkbox } from './components/ld/Checkbox';
 import { Divider } from './components/ld/Divider';
 import { IconButton } from './components/ld/IconButton';
-import { TextField } from './components/ld/TextField';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 import { GROUPED_TRANSACTIONS, TransactionGroup } from './data/transactions';
 
@@ -306,24 +305,43 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
 
         {activeTab === 'transactions' && (
           <>
-            <style>{`
-              .activity-search fieldset { border-radius: 9999px !important; }
-              .activity-search input { border-radius: 9999px !important; }
-              .activity-filters .ld-chip-chip { border-radius: 9999px !important; }
-            `}</style>
-            {/* ── Search bar ────────────────────────────────────── */}
-            <div className="activity-search" style={{ padding: '16px 16px 0' }}>
-              <TextField
-                label=""
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                textFieldProps={{ placeholder: 'Search transactions…' }}
-                leadingIcon={
-                  <span style={{ color: '#74767c', display: 'flex', alignItems: 'center' }}>
-                    <LivingDesignFontIcon name="Search" />
-                  </span>
-                }
-              />
+            {/* ── Search bar (pill-shaped) ───────────────────────── */}
+            <div style={{ padding: '16px 16px 0' }}>
+              <div style={{ position: 'relative' }}>
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 14,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: '#74767c',
+                    display: 'flex',
+                    alignItems: 'center',
+                    pointerEvents: 'none',
+                    fontSize: 16,
+                  }}
+                >
+                  <LivingDesignFontIcon name="Search" />
+                </span>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search transactions…"
+                  style={{
+                    width: '100%',
+                    padding: '10px 16px 10px 40px',
+                    border: '1.5px solid #d1d5db',
+                    borderRadius: 9999,
+                    fontSize: 14,
+                    fontFamily: FONT,
+                    color: '#2e2f32',
+                    backgroundColor: '#ffffff',
+                    boxSizing: 'border-box',
+                    outline: 'none',
+                  }}
+                />
+              </div>
             </div>
 
             {/* ── Filters row ───────────────────────────────────── */}

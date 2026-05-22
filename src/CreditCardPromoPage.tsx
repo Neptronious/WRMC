@@ -63,58 +63,116 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#ffffff' }}>
 
-      {/* ── Header bar: back + search + cart ─────────────────────────────────── */}
-      <div
-        style={{
-          backgroundColor: '#0053e2',
-          padding: '8px 12px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          flexShrink: 0,
-        }}
-      >
-        <IconButton a11yLabel="Go back" variant="round" size="small" color="white" onClick={onBack}>
-          <LivingDesignFontIcon name="ArrowLeft" />
-        </IconButton>
+      {/* ── Header (two rows) ─────────────────────────────────────────────────── */}
+      <div style={{ backgroundColor: '#0053e2', flexShrink: 0 }}>
 
-        {/* Search bar */}
-        <div style={{ flex: 1, position: 'relative' }}>
-          <span
-            style={{
-              position: 'absolute',
-              left: 10,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: '#74767c',
-              display: 'flex',
-              alignItems: 'center',
-              pointerEvents: 'none',
-            }}
-          >
-            <LivingDesignFontIcon name="Search" />
-          </span>
-          <input
-            type="text"
-            placeholder="Search everything at Walmart"
-            style={{
-              width: '100%',
-              padding: '9px 12px 9px 34px',
-              border: 'none',
-              borderRadius: 4,
-              fontSize: 14,
-              fontFamily: FONT,
-              color: '#2e2f32',
-              backgroundColor: '#ffffff',
-              boxSizing: 'border-box',
-              outline: 'none',
-            }}
-          />
+        {/* Row 1: back + pill search + cart */}
+        <div
+          style={{
+            padding: '8px 12px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+          }}
+        >
+          <IconButton a11yLabel="Go back" variant="round" size="small" color="white" onClick={onBack}>
+            <LivingDesignFontIcon name="ArrowLeft" />
+          </IconButton>
+
+          {/* Pill-shaped search bar */}
+          <div style={{ flex: 1, position: 'relative' }}>
+            <span
+              style={{
+                position: 'absolute',
+                left: 12,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: '#74767c',
+                display: 'flex',
+                alignItems: 'center',
+                pointerEvents: 'none',
+                fontSize: 16,
+              }}
+            >
+              <LivingDesignFontIcon name="Search" />
+            </span>
+            <input
+              type="text"
+              placeholder="Search everything at Walmart"
+              style={{
+                width: '100%',
+                padding: '9px 36px 9px 36px',
+                border: 'none',
+                borderRadius: 9999,
+                fontSize: 14,
+                fontFamily: FONT,
+                color: '#2e2f32',
+                backgroundColor: '#ffffff',
+                boxSizing: 'border-box',
+                outline: 'none',
+              }}
+            />
+          </div>
+
+          <IconButton a11yLabel="Cart" variant="round" size="small" color="white" onClick={() => {}}>
+            <LivingDesignFontIcon name="Cart" />
+          </IconButton>
         </div>
 
-        <IconButton a11yLabel="Cart" variant="round" size="small" color="white" onClick={() => {}}>
-          <LivingDesignFontIcon name="Cart" />
-        </IconButton>
+        {/* Row 2: delivery / pickup selector */}
+        <div
+          style={{
+            padding: '4px 16px 10px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+          }}
+        >
+          {/* Left group: phone icon + text + pipe + postal code */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
+            <span style={{ fontSize: 16, flexShrink: 0, lineHeight: 1 }}>📱</span>
+            <span
+              style={{
+                fontSize: 12,
+                color: '#ffffff',
+                fontFamily: FONT,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              How would you want your items?
+            </span>
+            <span
+              style={{
+                color: 'rgba(255,255,255,0.4)',
+                flexShrink: 0,
+                fontSize: 14,
+                fontWeight: 300,
+                lineHeight: 1,
+              }}
+            >
+              |
+            </span>
+            <span
+              style={{
+                fontSize: 12,
+                color: '#ffffff',
+                fontFamily: FONT,
+                fontWeight: 700,
+                flexShrink: 0,
+              }}
+            >
+              V6B 2Y5
+            </span>
+          </div>
+
+          {/* Right: down chevron */}
+          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+            <LivingDesignFontIcon name="ChevronDown" />
+          </span>
+        </div>
+
       </div>
 
       {/* ── Header Image ─────────────────────────────────────────────────────── */}
