@@ -83,7 +83,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
             whiteSpace: 'nowrap',
           }}
         >
-          Temporary shopping pass
+          Credit card
         </h1>
       </div>
 

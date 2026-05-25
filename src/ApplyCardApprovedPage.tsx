@@ -13,7 +13,6 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 
 interface ApplyCardApprovedPageProps {
   onActivateCard: () => void;
-  onContinueShopping: () => void;
   onGoToCreditCard: () => void;
 }
 
@@ -83,7 +82,7 @@ function DummyBarcode() {
 
 // ── ApplyCardApprovedPage ─────────────────────────────────────────────────────
 
-export default function ApplyCardApprovedPage({ onActivateCard, onContinueShopping, onGoToCreditCard }: ApplyCardApprovedPageProps) {
+export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard }: ApplyCardApprovedPageProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
@@ -400,10 +399,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onContinueShoppi
       {/* ── Sticky footer ─────────────────────────────────────────────────────── */}
       <div style={{ flexShrink: 0, backgroundColor: '#ffffff', borderTop: '1px solid #e5e7eb', padding: '16px 16px 0' }}>
         <div style={{ maxWidth: 600, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <Button variant="primary" isFullWidth size="medium" onClick={onContinueShopping}>
-            Continue shopping
-          </Button>
-          <Button variant="secondary" isFullWidth size="medium" onClick={onGoToCreditCard}>
+          <Button variant="primary" isFullWidth size="medium" onClick={onGoToCreditCard}>
             Go to credit card
           </Button>
         </div>

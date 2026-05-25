@@ -225,7 +225,6 @@ export default function App() {
       <Route path="/apply-card/approved" element={
         <ApplyCardApprovedPage
           onActivateCard={() => navigate('/activate-card')}
-          onContinueShopping={() => navigate('/')}
           onGoToCreditCard={() => navigate('/temporary-shopping-pass')}
         />
       } />
