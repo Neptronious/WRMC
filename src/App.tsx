@@ -226,7 +226,7 @@ export default function App() {
         <ApplyCardApprovedPage
           onActivateCard={() => navigate('/activate-card')}
           onContinueShopping={() => navigate('/')}
-          onGoToCreditCard={() => navigate('/credit-card-home')}
+          onGoToCreditCard={() => navigate('/temporary-shopping-pass')}
         />
       } />
 

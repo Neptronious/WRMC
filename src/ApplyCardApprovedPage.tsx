@@ -87,13 +87,14 @@ export default function ApplyCardApprovedPage({ onActivateCard, onContinueShoppi
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
-      {/* ── Header — matches home page, "Hi Jean" instead of "Sign in" ──────── */}
+      {/* ── Header ────────────────────────────────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0, backgroundColor: '#0053e2' }}>
+
+        {/* Row 1: Hi Jean + logo + cart */}
         <div
           style={{
             maxWidth: 600,
             margin: '0 auto',
-            backgroundColor: '#0053E2',
             padding: '0 16px',
             height: 52,
             display: 'flex',
@@ -101,7 +102,6 @@ export default function ApplyCardApprovedPage({ onActivateCard, onContinueShoppi
             justifyContent: 'space-between',
           }}
         >
-          {/* Left — Profile icon + Hi Jean */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ color: '#ffffff', fontSize: 22, display: 'flex', alignItems: 'center' }}>
               <LivingDesignFontIcon name="UserCircle" />
@@ -110,19 +110,76 @@ export default function ApplyCardApprovedPage({ onActivateCard, onContinueShoppi
               Hi Jean
             </span>
           </div>
-
-          {/* Center — Walmart spark logo */}
-          <img
-            src={`${BASE}logos/walmart.png`}
-            alt="Walmart"
-            style={{ width: 32, height: 32, objectFit: 'contain' }}
-          />
-
-          {/* Right — Cart icon */}
+          <img src={`${BASE}logos/walmart.png`} alt="Walmart" style={{ width: 32, height: 32, objectFit: 'contain' }} />
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path fill="#ffffff" d="M12 24a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm13 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM5.702 4a1.4 1.4 0 0 1 1.341.998L7.343 6h21.259a1.4 1.4 0 0 1 1.366 1.704l-1.83 8.233a1.4 1.4 0 0 1-1.211 1.088l-16.308 1.813A.583.583 0 0 0 10.684 20H27v2H10.684a2.583 2.583 0 0 1-.286-5.15l15.881-1.765L27.854 8H7.944l2.014 6.713-1.916.574L5.256 6H2V4h3.702Z" />
           </svg>
         </div>
+
+        {/* Row 2: pill search bar */}
+        <div style={{ maxWidth: 600, margin: '0 auto', padding: '4px 16px 8px', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ flex: 1, position: 'relative', minWidth: 0 }}>
+            <span
+              style={{
+                position: 'absolute',
+                left: 12,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: '#74767c',
+                display: 'flex',
+                alignItems: 'center',
+                pointerEvents: 'none',
+                fontSize: 16,
+              }}
+            >
+              <LivingDesignFontIcon name="Search" />
+            </span>
+            <input
+              type="text"
+              placeholder="Search everything at Walmart"
+              style={{
+                width: '100%',
+                padding: '9px 12px 9px 36px',
+                border: 'none',
+                borderRadius: 9999,
+                fontSize: 14,
+                fontFamily: FONT,
+                color: '#2e2f32',
+                backgroundColor: '#ffffff',
+                boxSizing: 'border-box',
+                outline: 'none',
+              }}
+            />
+          </div>
+          <button
+            type="button"
+            aria-label="Cart"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 4, flexShrink: 0, lineHeight: 1 }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="9" cy="21" r="1" fill="currentColor" stroke="none" />
+              <circle cx="20" cy="21" r="1" fill="currentColor" stroke="none" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Row 3: delivery / pickup selector */}
+        <div style={{ maxWidth: 600, margin: '0 auto', padding: '2px 16px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
+            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              How would you want your items?
+            </span>
+            <span style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, fontSize: 16, fontWeight: 300, lineHeight: 1 }}>|</span>
+            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
+              V6B 2Y5
+            </span>
+          </div>
+          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+            <LivingDesignFontIcon name="ChevronDown" />
+          </span>
+        </div>
+
       </div>
 
       {/* ── Scrollable body ───────────────────────────────────────────────────── */}

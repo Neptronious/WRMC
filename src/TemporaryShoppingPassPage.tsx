@@ -137,16 +137,11 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <div>
-                  <img
-                    src={`${BASE}logos/walmart.png`}
-                    alt="Walmart"
-                    style={{ height: 24, objectFit: 'contain', display: 'block' }}
-                  />
-                  <span style={{ fontSize: 10, color: '#74767c', fontFamily: FONT, marginTop: 2, display: 'block' }}>
-                    For use at Walmart only
-                  </span>
-                </div>
+                <img
+                  src={`${BASE}logos/walmart.png`}
+                  alt="Walmart"
+                  style={{ height: 24, objectFit: 'contain', display: 'block' }}
+                />
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
                   <span style={{ fontSize: 10, color: '#74767c', fontFamily: FONT, display: 'block' }}>
                     Valid through
@@ -170,6 +165,9 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
                 }}
               >
                 0 43257 89123 4
+              </p>
+              <p style={{ margin: 0, textAlign: 'center', fontSize: 11, color: '#74767c', fontFamily: FONT }}>
+                For use at Walmart only
               </p>
             </div>
 

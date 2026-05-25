@@ -158,6 +158,24 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
         </div>
       </div>
 
+      {/* ── Delivery / pickup selector row ─────────────────────────────────── */}
+      <div style={{ width: '100%', flexShrink: 0 }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', backgroundColor: '#0053E2', padding: '4px 16px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
+            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              How would you want your items?
+            </span>
+            <span style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, fontSize: 16, fontWeight: 300, lineHeight: 1 }}>|</span>
+            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
+              V6B 2Y5
+            </span>
+          </div>
+          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+            <LivingDesignFontIcon name="ChevronDown" />
+          </span>
+        </div>
+      </div>
+
       {/* ── Horizontal scrollable nav bar ───────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0 }}>
         <div
