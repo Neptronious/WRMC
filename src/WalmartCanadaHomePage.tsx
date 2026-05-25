@@ -62,7 +62,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#ffffff' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
       {/* ── Top header bar ──────────────────────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0 }}>
         <div

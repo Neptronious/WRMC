@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Container } from './components/ld/Container';
+import { Alert } from './components/ld/Alert';
 import { Button } from './components/ld/Button';
 import { Card, CardContent } from './components/ld/Card';
 import { Divider } from './components/ld/Divider';
@@ -12,7 +13,8 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 
 interface ApplyCardApprovedPageProps {
   onActivateCard: () => void;
-  onViewShoppingPass: () => void;
+  onContinueShopping: () => void;
+  onGoToCreditCard: () => void;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -59,44 +61,72 @@ const REDEEM_SECTIONS: RedeemSection[] = [
   },
 ];
 
+// ── Dummy barcode ─────────────────────────────────────────────────────────────
+
+function DummyBarcode() {
+  const widths = [2,1,3,1,2,3,1,2,1,3,2,1,1,2,3,1,2,1,3,2,1,2,3,1,1,3,2,1,3,1,2,1,2,3,1,2,1,3,2,1,2,1];
+  const segments: { x: number; w: number }[] = [];
+  let cx = 0;
+  for (let i = 0; i < widths.length; i++) {
+    const w = widths[i] * 2;
+    if (i % 2 === 0) segments.push({ x: cx, w });
+    cx += w;
+  }
+  return (
+    <svg width="100%" height={56} viewBox={`0 0 ${cx} 56`} preserveAspectRatio="none">
+      {segments.map((b, i) => (
+        <rect key={i} x={b.x} y={0} width={b.w} height={56} fill="#1a1a2e" />
+      ))}
+    </svg>
+  );
+}
+
 // ── ApplyCardApprovedPage ─────────────────────────────────────────────────────
 
-export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPass }: ApplyCardApprovedPageProps) {
+export default function ApplyCardApprovedPage({ onActivateCard, onContinueShopping, onGoToCreditCard }: ApplyCardApprovedPageProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
-      {/* ── Blue header ───────────────────────────────────────────────────────── */}
-      <div
-        style={{
-          backgroundColor: '#0053e2',
-          padding: '0 16px',
-          display: 'flex',
-          alignItems: 'center',
-          minHeight: 56,
-          flexShrink: 0,
-          position: 'relative',
-        }}
-      >
-        {/* Walmart logo — centered via absolute positioning */}
+      {/* ── Header — matches home page, "Hi Jean" instead of "Sign in" ──────── */}
+      <div style={{ width: '100%', flexShrink: 0, backgroundColor: '#0053e2' }}>
         <div
           style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            maxWidth: 600,
+            margin: '0 auto',
+            backgroundColor: '#0053E2',
+            padding: '0 16px',
+            height: 52,
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
+          {/* Left — Profile icon + Hi Jean */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ color: '#ffffff', fontSize: 22, display: 'flex', alignItems: 'center' }}>
+              <LivingDesignFontIcon name="UserCircle" />
+            </span>
+            <span style={{ color: '#ffffff', fontFamily: FONT, fontSize: 14, fontWeight: 600 }}>
+              Hi Jean
+            </span>
+          </div>
+
+          {/* Center — Walmart spark logo */}
           <img
             src={`${BASE}logos/walmart.png`}
             alt="Walmart"
-            style={{ height: 28, objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+            style={{ width: 32, height: 32, objectFit: 'contain' }}
           />
+
+          {/* Right — Cart icon */}
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#ffffff" d="M12 24a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm13 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM5.702 4a1.4 1.4 0 0 1 1.341.998L7.343 6h21.259a1.4 1.4 0 0 1 1.366 1.704l-1.83 8.233a1.4 1.4 0 0 1-1.211 1.088l-16.308 1.813A.583.583 0 0 0 10.684 20H27v2H10.684a2.583 2.583 0 0 1-.286-5.15l15.881-1.765L27.854 8H7.944l2.014 6.713-1.916.574L5.256 6H2V4h3.702Z" />
+          </svg>
         </div>
       </div>
 
       {/* ── Scrollable body ───────────────────────────────────────────────────── */}
-      <div style={{ flex: 1, overflowY: 'auto' }}>
+      <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 80 }}>
         <Container>
           <div style={{ maxWidth: 600, margin: '0 auto', padding: '40px 0 32px', display: 'flex', flexDirection: 'column', gap: 20 }}>
 
@@ -155,8 +185,66 @@ export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPa
             </Nudge>
 
             {/* ── Section divider ───────────────────────────────────────────────── */}
-            <div style={{ margin: '0' }}>
-              <Divider />
+            <Divider />
+
+            {/* ── Temporary shopping pass section ──────────────────────────────── */}
+            <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#2e2f32', fontFamily: FONT }}>
+              Temporary shopping pass
+            </h2>
+
+            {/* Success alert */}
+            <Alert variant="success">
+              Temporary shopping pass added to your wallet
+            </Alert>
+
+            {/* Shopping pass card */}
+            <div
+              style={{
+                backgroundColor: '#f5f6f7',
+                borderRadius: 16,
+                padding: 16,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 12,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <img
+                  src={`${BASE}logos/walmart.png`}
+                  alt="Walmart"
+                  style={{ height: 24, objectFit: 'contain' }}
+                />
+                <span style={{ fontSize: 11, color: '#74767c', fontFamily: FONT }}>
+                  For use at Walmart only
+                </span>
+              </div>
+              <div style={{ padding: '4px 0' }}>
+                <DummyBarcode />
+              </div>
+              <p
+                style={{
+                  margin: 0,
+                  textAlign: 'center',
+                  fontSize: 13,
+                  letterSpacing: '0.08em',
+                  color: '#2e2f32',
+                  fontFamily: 'monospace',
+                }}
+              >
+                0 43257 89123 4
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  textAlign: 'center',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: '#2e2f32',
+                  fontFamily: FONT,
+                }}
+              >
+                Balance: $500
+              </p>
             </div>
 
             {/* ── How to earn rewards card ──────────────────────────────────────── */}
@@ -194,7 +282,6 @@ export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPa
                   {REDEEM_SECTIONS.map((section, sIdx) => (
                     <React.Fragment key={section.title}>
                       <div style={{ paddingTop: sIdx === 0 ? 0 : 16, paddingBottom: 16 }}>
-                        {/* Section heading with icon */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                           <span
                             style={{
@@ -215,8 +302,6 @@ export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPa
                             {section.title}
                           </p>
                         </div>
-
-                        {/* Bullet points */}
                         <div style={{ paddingLeft: 42, display: 'flex', flexDirection: 'column', gap: 6 }}>
                           {section.bullets.map((bullet, bIdx) => (
                             <div key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
@@ -237,19 +322,15 @@ export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPa
                           ))}
                         </div>
                       </div>
-
                       {sIdx < REDEEM_SECTIONS.length - 1 && <Divider />}
                     </React.Fragment>
                   ))}
                 </div>
 
-                {/* CTA */}
                 <div style={{ margin: '16px -16px 0' }}><Divider /></div>
                 <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
                   <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}>
-                    <Link href="#" color="default">
-                      Learn more in FAQs
-                    </Link>
+                    <Link href="#" color="default">Learn more in FAQs</Link>
                   </span>
                 </div>
               </CardContent>
@@ -260,14 +341,25 @@ export default function ApplyCardApprovedPage({ onActivateCard, onViewShoppingPa
       </div>
 
       {/* ── Sticky footer ─────────────────────────────────────────────────────── */}
-      <div style={{ flexShrink: 0, backgroundColor: '#ffffff', borderTop: '1px solid #e5e7eb', padding: '16px 16px 24px' }}>
+      <div style={{ flexShrink: 0, backgroundColor: '#ffffff', borderTop: '1px solid #e5e7eb', padding: '16px 16px 0' }}>
         <div style={{ maxWidth: 600, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <Button variant="primary" isFullWidth size="medium">
-            Start shopping
+          <Button variant="primary" isFullWidth size="medium" onClick={onContinueShopping}>
+            Continue shopping
           </Button>
-          <Button variant="secondary" isFullWidth size="medium" onClick={onViewShoppingPass}>
-            View Temporary shopping pass
+          <Button variant="secondary" isFullWidth size="medium" onClick={onGoToCreditCard}>
+            Go to credit card
           </Button>
+        </div>
+      </div>
+
+      {/* ── Bottom nav bar image ──────────────────────────────────────────────── */}
+      <div style={{ flexShrink: 0 }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', width: '100%' }}>
+          <img
+            src={`${BASE}walmart-canada/navbar.png`}
+            alt="Navigation Bar"
+            style={{ width: '100%', display: 'block', height: 'auto' }}
+          />
         </div>
       </div>
 

@@ -43,6 +43,9 @@ function DummyBarcode() {
 // ── TemporaryShoppingPassPage ─────────────────────────────────────────────────
 
 export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: TemporaryShoppingPassPageProps) {
+  const validThrough = new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
+    .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
@@ -126,22 +129,32 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
             <div
               style={{
                 backgroundColor: '#f5f6f7',
-                borderRadius: '50%',
+                borderRadius: 16,
                 padding: 16,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 12,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <img
-                  src={`${BASE}logos/walmart.png`}
-                  alt="Walmart"
-                  style={{ height: 24, objectFit: 'contain' }}
-                />
-                <span style={{ fontSize: 11, color: '#74767c', fontFamily: FONT }}>
-                  For use at Walmart only
-                </span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                <div>
+                  <img
+                    src={`${BASE}logos/walmart.png`}
+                    alt="Walmart"
+                    style={{ height: 24, objectFit: 'contain', display: 'block' }}
+                  />
+                  <span style={{ fontSize: 10, color: '#74767c', fontFamily: FONT, marginTop: 2, display: 'block' }}>
+                    For use at Walmart only
+                  </span>
+                </div>
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <span style={{ fontSize: 10, color: '#74767c', fontFamily: FONT, display: 'block' }}>
+                    Valid through
+                  </span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, display: 'block' }}>
+                    {validThrough}
+                  </span>
+                </div>
               </div>
               <div style={{ padding: '4px 0' }}>
                 <DummyBarcode />
