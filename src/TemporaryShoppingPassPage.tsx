@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Container } from './components/ld/Container';
-import { Button } from './components/ld/Button';
 import { Card, CardContent } from './components/ld/Card';
 import { Divider } from './components/ld/Divider';
 import { Alert } from './components/ld/Alert';
@@ -240,14 +239,6 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
         </Container>
       </div>
 
-      {/* ── Sticky footer ─────────────────────────────────────────────────────── */}
-      <div style={{ flexShrink: 0, backgroundColor: '#ffffff', borderTop: '1px solid #e5e7eb', padding: '16px 16px 24px' }}>
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
-          <Button variant="primary" isFullWidth size="medium">
-            Start shopping
-          </Button>
-        </div>
-      </div>
 
     </div>
   );
