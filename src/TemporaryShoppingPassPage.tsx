@@ -4,6 +4,7 @@ import { Container } from './components/ld/Container';
 import { Card, CardContent } from './components/ld/Card';
 import { Divider } from './components/ld/Divider';
 import { Alert } from './components/ld/Alert';
+import { Button } from './components/ld/Button';
 import { IconButton } from './components/ld/IconButton';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 
