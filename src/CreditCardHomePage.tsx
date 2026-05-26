@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 
 import { Container } from './components/ld/Container';
 import { Card } from './components/ld/Card';
 import { CardContent } from './components/ld/Card';
-import { Alert } from './components/ld/Alert';
 import { Button } from './components/ld/Button';
 import { LinkButton } from './components/ld/LinkButton';
 import { IconButton } from './components/ld/IconButton';
@@ -20,7 +18,6 @@ interface CreditCardHomePageProps {
   onPayNow: () => void;
   onNavSelect: (key: string) => void;
   paymentMade?: boolean;
-  showActivationSuccess?: boolean;
 }
 
 // ── Dummy data ────────────────────────────────────────────────────────────────
@@ -81,16 +78,8 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── CreditCardHomePage ────────────────────────────────────────────────────────
 
-export default function CreditCardHomePage({ onBack, onContinue: _onContinue, onPayNow, onNavSelect, paymentMade = false, showActivationSuccess = false }: CreditCardHomePageProps) {
+export default function CreditCardHomePage({ onBack, onContinue: _onContinue, onPayNow, onNavSelect, paymentMade = false }: CreditCardHomePageProps) {
   const summary = paymentMade ? POST_PAYMENT : PRE_PAYMENT;
-
-  const [activationBanner, setActivationBanner] = useState(showActivationSuccess);
-  useEffect(() => {
-    if (!showActivationSuccess) return;
-    setActivationBanner(true);
-    const t = setTimeout(() => setActivationBanner(false), 5000);
-    return () => clearTimeout(t);
-  }, [showActivationSuccess]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#ffffff' }}>
@@ -131,15 +120,6 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
           Credit card
         </h1>
       </div>
-
-      {/* ── Activation success banner ───────────────────────────── */}
-      {activationBanner && (
-        <div style={{ flexShrink: 0, padding: '12px 16px 0' }}>
-          <Alert variant="success">
-            Your card has been activated successfully — start spending!
-          </Alert>
-        </div>
-      )}
 
       {/* ── Scrollable body ─────────────────────────────────────── */}
       <div style={{ flex: 1, overflowY: 'auto' }}>

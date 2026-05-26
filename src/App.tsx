@@ -55,7 +55,6 @@ export default function App() {
   const [paymentMade, setPaymentMade] = useState(false);
   const [lastPayment, setLastPayment] = useState<{ amount: string; date: string } | null>(null);
   const [reportReason, setReportReason] = useState('I have lost my card');
-  const [showActivationSuccess, setShowActivationSuccess] = useState(false);
 
   // ── Apply card flow state ──────────────────────────────────────────────────
   const [applyEmail, setApplyEmail] = useState('');
@@ -103,7 +102,6 @@ export default function App() {
           onPayNow={() => navigate('/pay-bill')}
           onNavSelect={handleNavSelect}
           paymentMade={paymentMade}
-          showActivationSuccess={showActivationSuccess}
         />
       } />
 
@@ -254,7 +252,7 @@ export default function App() {
       <Route path="/activate-card" element={
         <ActivateCardPage
           onDone={() => navigate('/apply-card/approved')}
-          onActivated={() => { setShowActivationSuccess(true); navigate('/credit-card-home'); }}
+          onActivated={() => navigate('/credit-card-home')}
         />
       } />
 
