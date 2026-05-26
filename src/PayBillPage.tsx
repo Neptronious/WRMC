@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { Container } from './components/ld/Container';
 import { Card } from './components/ld/Card';
@@ -62,6 +62,7 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
 
   // ── Payment date state ───────────────────────────────────────
   const [paymentDate, setPaymentDate] = useState<Date>(new Date());
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   // ── Handlers ────────────────────────────────────────────────
   const handleOtherAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -214,14 +215,23 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                 <div style={{ margin: '12px -16px 16px' }}><Divider /></div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <label
-                    htmlFor="payment-date"
-                    style={{ fontSize: 13, color: '#74767c', fontFamily: FONT }}
-                  >
+                  <span style={{ fontSize: 13, color: '#74767c', fontFamily: FONT }}>
                     Select date
-                  </label>
-                  {/* Overlay pattern: styled display div + invisible native date input on top */}
-                  <div style={{ position: 'relative' }}>
+                  </span>
+                  {/* Click anywhere on the styled field → showPicker() */}
+                  <div
+                    style={{ position: 'relative', cursor: 'pointer' }}
+                    onClick={() => {
+                      const input = dateInputRef.current;
+                      if (!input) return;
+                      try {
+                        // showPicker() is supported on Chrome, Firefox, Edge
+                        (input as HTMLInputElement & { showPicker?: () => void }).showPicker?.();
+                      } catch {
+                        input.focus();
+                      }
+                    }}
+                  >
                     {/* Visible styled display */}
                     <div
                       style={{
@@ -243,8 +253,9 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                         <LivingDesignFontIcon name="Calendar" />
                       </span>
                     </div>
-                    {/* Invisible native date input positioned over the display */}
+                    {/* Hidden native date input — triggered programmatically */}
                     <input
+                      ref={dateInputRef}
                       id="payment-date"
                       type="date"
                       value={toInputValue(paymentDate)}
@@ -255,12 +266,11 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                         inset: 0,
                         width: '100%',
                         height: '100%',
-                        opacity: 0.01,
-                        cursor: 'pointer',
+                        opacity: 0,
+                        pointerEvents: 'none',
                         border: 'none',
                         padding: 0,
                         margin: 0,
-                        zIndex: 2,
                         fontSize: 16,
                         boxSizing: 'border-box',
                       }}

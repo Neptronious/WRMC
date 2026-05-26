@@ -42,7 +42,7 @@ export const THEME_PRESETS: Record<string, ThemePreset> = {
       '--ld-semantic-color-action-fill-primary-focused': '#E6AD07',
       '--ld-semantic-color-action-fill-primary-pressed': '#CC9A07',
       '--ld-semantic-color-action-text-on-fill-primary': '#2e2f32',
-      '--ld-semantic-color-action-border-secondary': '#FFC107',
+      '--ld-semantic-color-action-border-secondary': '#2e2f32',
       '--ld-semantic-color-action-text-on-fill-secondary': '#2e2f32',
       '--ld-semantic-color-action-fill-secondary-focused': '#FFF7BF',
       '--ld-semantic-color-action-fill-secondary-hovered': '#FFF7BF',

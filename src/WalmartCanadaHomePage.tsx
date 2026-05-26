@@ -178,7 +178,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
           style={{
             maxWidth: 600,
             margin: '0 auto',
-            backgroundColor: '#002E99',
+            backgroundColor: '#FFF7BF',
             overflowX: 'auto',
             WebkitOverflowScrolling: 'touch',
             scrollbarWidth: 'none',
@@ -197,7 +197,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
               <React.Fragment key={link.key}>
                 {/* Vertical separator after Departments */}
                 {i === 1 && (
-                  <div style={{ width: 1, height: 16, backgroundColor: 'rgba(255,255,255,0.4)', flexShrink: 0, margin: '0 4px' }} />
+                  <div style={{ width: 1, height: 16, backgroundColor: 'rgba(0,0,0,0.2)', flexShrink: 0, margin: '0 4px' }} />
                 )}
                 <button
                   type="button"

@@ -5,6 +5,7 @@ export interface Transaction {
   brand: string;
   category: string;
   amount: number;
+  status?: 'failed' | 'refund';
 }
 
 export interface TransactionGroup {
@@ -19,6 +20,13 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
     transactions: [
       { id: 'CK-3021',  brand: 'Circle K',    category: 'Groceries',       amount: 67.23  },
       { id: 'NET-1847', brand: 'Netflix',      category: 'Subscriptions',   amount: 15.99  },
+      { id: 'BBY-3022', brand: 'Best Buy',     category: 'Electronics',     amount: 399.99, status: 'failed' },
+    ],
+  },
+  {
+    date: 'Apr 19, 2026',
+    transactions: [
+      { id: 'AMZ-3019', brand: 'Amazon',       category: 'Shopping',        amount: 54.99,  status: 'refund' },
     ],
   },
   {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { Chip } from './components/ld/Chip';
 import { Divider } from './components/ld/Divider';
 import { IconButton } from './components/ld/IconButton';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
@@ -40,7 +39,7 @@ const ALL_GROUPS: RewardGroup[] = [
   {
     month: 'Apr 2026',
     transactions: [
-      { id: 'rw-a01', type: 'redeemed', title: 'Redeemed at Web store',   date: 'Apr 15, 2026', amount: -5.00  },
+      { id: 'rw-a01', type: 'redeemed', title: 'Redeemed at Fresh Mart',   date: 'Apr 15, 2026', amount: -5.00  },
       { id: 'rw-a02', type: 'adjusted', title: 'Adjusted – Amazon refund', date: 'Apr 8, 2026',  amount: -2.40  },
       { id: 'rw-a03', type: 'earned',   title: 'March rewards earned',     date: 'Apr 1, 2026',  amount: +18.42 },
     ],
@@ -48,9 +47,9 @@ const ALL_GROUPS: RewardGroup[] = [
   {
     month: 'Mar 2026',
     transactions: [
-      { id: 'rw-m01', type: 'redeemed', title: 'Redeemed at Store',        date: 'Mar 22, 2026', amount: -10.00 },
+      { id: 'rw-m01', type: 'redeemed', title: 'Redeemed at Fresh Mart Store',        date: 'Mar 22, 2026', amount: -10.00 },
       { id: 'rw-m02', type: 'adjusted', title: 'Adjusted – Shell Gas refund', date: 'Mar 18, 2026', amount: -1.56  },
-      { id: 'rw-m03', type: 'redeemed', title: 'Redeemed at Web store',     date: 'Mar 9, 2026',  amount: -5.00  },
+      { id: 'rw-m03', type: 'redeemed', title: 'Redeemed at Fresh Mart',     date: 'Mar 9, 2026',  amount: -5.00  },
       { id: 'rw-m04', type: 'earned',   title: 'February rewards earned',    date: 'Mar 1, 2026',  amount: +21.87 },
     ],
   },
@@ -58,7 +57,7 @@ const ALL_GROUPS: RewardGroup[] = [
     month: 'Feb 2026',
     transactions: [
       { id: 'rw-f01', type: 'adjusted', title: 'Adjusted – Target refund', date: 'Feb 28, 2026', amount: -1.30  },
-      { id: 'rw-f02', type: 'redeemed', title: 'Redeemed at Store',      date: 'Feb 15, 2026', amount: -5.00  },
+      { id: 'rw-f02', type: 'redeemed', title: 'Redeemed at Fresh Mart Store',      date: 'Feb 15, 2026', amount: -5.00  },
       { id: 'rw-f03', type: 'earned',   title: 'January rewards earned',   date: 'Feb 1, 2026',  amount: +16.50 },
     ],
   },
@@ -66,22 +65,22 @@ const ALL_GROUPS: RewardGroup[] = [
     month: 'Jan 2026',
     transactions: [
       { id: 'rw-j01', type: 'adjusted', title: 'Adjusted – Starbucks refund', date: 'Jan 20, 2026', amount: -0.20  },
-      { id: 'rw-j02', type: 'redeemed', title: 'Redeemed at Store',         date: 'Jan 10, 2026', amount: -10.00 },
+      { id: 'rw-j02', type: 'redeemed', title: 'Redeemed at Fresh Mart Store',         date: 'Jan 10, 2026', amount: -10.00 },
       { id: 'rw-j03', type: 'earned',   title: 'December rewards earned',     date: 'Jan 1, 2026',  amount: +22.80 },
     ],
   },
   {
     month: 'Dec 2025',
     transactions: [
-      { id: 'rw-d01', type: 'redeemed', title: 'Redeemed at Store',   date: 'Dec 15, 2025', amount: -5.00  },
+      { id: 'rw-d01', type: 'redeemed', title: 'Redeemed at Fresh Mart Store',   date: 'Dec 15, 2025', amount: -5.00  },
       { id: 'rw-d02', type: 'earned',   title: 'November rewards earned', date: 'Dec 1, 2025', amount: +14.20 },
     ],
   },
   {
     month: 'Nov 2025',
     transactions: [
-      { id: 'rw-n01', type: 'adjusted', title: 'Adjusted – Store refund',   date: 'Nov 22, 2025', amount: -2.07 },
-      { id: 'rw-n02', type: 'redeemed', title: 'Redeemed at Web store',    date: 'Nov 14, 2025', amount: -5.00 },
+      { id: 'rw-n01', type: 'adjusted', title: 'Adjusted – Fresh Mart Store refund',   date: 'Nov 22, 2025', amount: -2.07 },
+      { id: 'rw-n02', type: 'redeemed', title: 'Redeemed at Fresh Mart',    date: 'Nov 14, 2025', amount: -5.00 },
       { id: 'rw-n03', type: 'earned',   title: 'October rewards earned',    date: 'Nov 1, 2025',  amount: +14.81 },
     ],
   },
@@ -187,15 +186,33 @@ export default function RewardsActivityPage({ onBack, onNavSelect }: RewardsActi
           borderBottom: '1px solid #e5e7eb',
         }}
       >
-        {FILTERS.map(({ key, label }) => (
-          <Chip
-            key={key}
-            selected={activeFilter === key}
-            onClick={() => setActiveFilter(key)}
-          >
-            {label}
-          </Chip>
-        ))}
+        {FILTERS.map(({ key, label }) => {
+          const isActive = activeFilter === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setActiveFilter(key)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                borderRadius: 9999,
+                border: `1.5px solid ${isActive ? '#2e2f32' : '#d1d5db'}`,
+                backgroundColor: isActive ? '#2e2f32' : '#ffffff',
+                color: isActive ? '#FFC107' : '#2e2f32',
+                fontFamily: FONT,
+                fontSize: 13,
+                fontWeight: isActive ? 700 : 400,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Transaction list ─────────────────────────────────────────── */}

@@ -203,9 +203,12 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
         txns = txns.filter(tx => categories.includes(tx.category));
       }
 
-      // Type — all dummy data are purchases
-      if (types.length > 0 && !types.includes('Purchase')) {
-        txns = [];
+      // Type filter
+      if (types.length > 0) {
+        txns = txns.filter(tx => {
+          if (tx.status === 'refund') return types.includes('Refund');
+          return types.includes('Purchase');
+        });
       }
 
       return { ...group, transactions: txns };
@@ -478,6 +481,8 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                     <div style={{ backgroundColor: '#ffffff' }}>
                       {group.transactions.map((tx, txIndex) => {
                         const rewards = (tx.amount * 0.03).toFixed(2);
+                        const isFailed = tx.status === 'failed';
+                        const isRefund = tx.status === 'refund';
                         return (
                           <React.Fragment key={tx.id}>
                             <div
@@ -500,6 +505,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                                   flexShrink: 0,
                                   overflow: 'hidden',
                                   backgroundColor: 'transparent',
+                                  opacity: isFailed ? 0.4 : 1,
                                 }}
                               >
                                 {BRAND_LOGOS[tx.brand] ? (
@@ -522,7 +528,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                                     margin: '0 0 2px',
                                     fontSize: 14,
                                     fontWeight: 700,
-                                    color: '#2e2f32',
+                                    color: isFailed ? '#74767c' : '#2e2f32',
                                     fontFamily: FONT,
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden',
@@ -543,29 +549,58 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                                 </p>
                               </div>
 
-                              {/* Amount + rewards */}
+                              {/* Amount + rewards / status */}
                               <div style={{ textAlign: 'right', flexShrink: 0 }}>
                                 <p
                                   style={{
                                     margin: '0 0 2px',
                                     fontSize: 14,
                                     fontWeight: 700,
-                                    color: '#2e2f32',
+                                    color: isRefund ? '#2e844a' : isFailed ? '#74767c' : '#2e2f32',
                                     fontFamily: FONT,
+                                    textDecoration: isFailed ? 'line-through' : 'none',
                                   }}
                                 >
-                                  ${tx.amount.toFixed(2)}
+                                  {isRefund ? '+' : ''}${tx.amount.toFixed(2)}
                                 </p>
-                                <p
-                                  style={{
-                                    margin: 0,
-                                    fontSize: 12,
-                                    color: '#2e844a',
-                                    fontFamily: FONT,
-                                  }}
-                                >
-                                  +${rewards} rewards
-                                </p>
+                                {isFailed ? (
+                                  <span
+                                    style={{
+                                      display: 'inline-block',
+                                      fontSize: 11,
+                                      fontWeight: 700,
+                                      color: '#d72c0d',
+                                      fontFamily: FONT,
+                                      backgroundColor: '#ffd5d2',
+                                      borderRadius: 4,
+                                      padding: '1px 6px',
+                                    }}
+                                  >
+                                    Failed
+                                  </span>
+                                ) : isRefund ? (
+                                  <p
+                                    style={{
+                                      margin: 0,
+                                      fontSize: 12,
+                                      color: '#74767c',
+                                      fontFamily: FONT,
+                                    }}
+                                  >
+                                    -${rewards} adjusted for refund
+                                  </p>
+                                ) : (
+                                  <p
+                                    style={{
+                                      margin: 0,
+                                      fontSize: 12,
+                                      color: '#2e844a',
+                                      fontFamily: FONT,
+                                    }}
+                                  >
+                                    +${rewards} rewards
+                                  </p>
+                                )}
                               </div>
                             </div>
 

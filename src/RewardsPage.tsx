@@ -47,7 +47,7 @@ const RECENT_REWARDS: RewardActivity[] = [
   {
     id: 'rw-002',
     type: 'redeemed',
-    title: 'Redeemed at Store',
+    title: 'Redeemed at Fresh Mart Store',
     subtitle: 'Mar 22, 2026',
     amount: -10.00,
   },
@@ -68,14 +68,14 @@ const RECENT_REWARDS: RewardActivity[] = [
   {
     id: 'rw-005',
     type: 'redeemed',
-    title: 'Redeemed at Web store',
+    title: 'Redeemed at Fresh Mart',
     subtitle: 'Feb 15, 2026',
     amount: -5.00,
   },
 ];
 
 const EARN_POINTS = [
-  { rate: 'Earn 3%', detail: 'when you shop in stores or online at our web store²' },
+  { rate: 'Earn 3%', detail: 'when you shop in stores or online at Fresh Mart²' },
   { rate: 'Earn 1%', detail: 'when you shop everywhere else' },
   { rate: 'Delivery pass benefit', detail: 'enjoy up to 6 months free every year' },
 ];
@@ -89,7 +89,7 @@ interface RedeemSection {
 const REDEEM_SECTIONS: RedeemSection[] = [
   {
     icon: 'Facility',
-    title: 'Store checkout',
+    title: 'Fresh Mart Store checkout',
     bullets: [
       'Swipe your physical card at the terminal.',
       'It will ask if you want to apply Reward Dollars.',
@@ -98,7 +98,7 @@ const REDEEM_SECTIONS: RedeemSection[] = [
   },
   {
     icon: 'Globe',
-    title: 'Web store',
+    title: 'Fresh Mart',
     bullets: [
       'At checkout, select "Redeem Reward Dollars".',
       'Choose your amount in $5 increments.',

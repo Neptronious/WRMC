@@ -339,6 +339,8 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   {RECENT_TRANSACTIONS.map((tx, index) => {
                     const rewards = (tx.amount * 0.03).toFixed(2);
+                    const isFailed = tx.status === 'failed';
+                    const isRefund = tx.status === 'refund';
                     return (
                       <React.Fragment key={tx.id}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: index === 0 ? 0 : 12, paddingBottom: 12 }}>
@@ -355,6 +357,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                               justifyContent: 'center',
                               flexShrink: 0,
                               overflow: 'hidden',
+                              opacity: isFailed ? 0.4 : 1,
                             }}
                           >
                             {BRAND_LOGOS[tx.brand] ? (
@@ -377,7 +380,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                                 margin: '0 0 2px',
                                 fontSize: 14,
                                 fontWeight: 700,
-                                color: '#2e2f32',
+                                color: isFailed ? '#74767c' : '#2e2f32',
                                 fontFamily: FONT,
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
@@ -398,29 +401,58 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                             </p>
                           </div>
 
-                          {/* Amount + rewards */}
+                          {/* Amount + rewards / status */}
                           <div style={{ textAlign: 'right', flexShrink: 0 }}>
                             <p
                               style={{
                                 margin: '0 0 2px',
                                 fontSize: 14,
                                 fontWeight: 700,
-                                color: '#2e2f32',
+                                color: isRefund ? '#2e844a' : isFailed ? '#74767c' : '#2e2f32',
                                 fontFamily: FONT,
+                                textDecoration: isFailed ? 'line-through' : 'none',
                               }}
                             >
-                              ${tx.amount.toFixed(2)}
+                              {isRefund ? '+' : ''}${tx.amount.toFixed(2)}
                             </p>
-                            <p
-                              style={{
-                                margin: 0,
-                                fontSize: 12,
-                                color: '#2e844a',
-                                fontFamily: FONT,
-                              }}
-                            >
-                              +${rewards} rewards
-                            </p>
+                            {isFailed ? (
+                              <span
+                                style={{
+                                  display: 'inline-block',
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  color: '#d72c0d',
+                                  fontFamily: FONT,
+                                  backgroundColor: '#ffd5d2',
+                                  borderRadius: 4,
+                                  padding: '1px 6px',
+                                }}
+                              >
+                                Failed
+                              </span>
+                            ) : isRefund ? (
+                              <p
+                                style={{
+                                  margin: 0,
+                                  fontSize: 12,
+                                  color: '#74767c',
+                                  fontFamily: FONT,
+                                }}
+                              >
+                                -${rewards} adjusted for refund
+                              </p>
+                            ) : (
+                              <p
+                                style={{
+                                  margin: 0,
+                                  fontSize: 12,
+                                  color: '#2e844a',
+                                  fontFamily: FONT,
+                                }}
+                              >
+                                +${rewards} rewards
+                              </p>
+                            )}
                           </div>
                         </div>
 
