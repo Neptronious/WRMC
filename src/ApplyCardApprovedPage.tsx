@@ -36,7 +36,7 @@ interface RedeemSection {
 const REDEEM_SECTIONS: RedeemSection[] = [
   {
     icon: 'Facility',
-    title: 'Fresh Mart Store checkout',
+    title: 'Avenue Mart Store checkout',
     bullets: [
       'Swipe your physical card at the terminal.',
       'It will ask if you want to apply Reward Dollars.',
@@ -45,7 +45,7 @@ const REDEEM_SECTIONS: RedeemSection[] = [
   },
   {
     icon: 'Globe',
-    title: 'Fresh Mart',
+    title: 'avenuemart.ca',
     bullets: [
       'At checkout, select "Redeem Reward Dollars".',
       'Choose your amount in $5 increments.',
