@@ -24,7 +24,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 // ── Brand logo URLs ──────────────────────────────────────────────
 const BASE = import.meta.env.BASE_URL;
 const BRAND_LOGOS: Record<string, string> = {
-  'Circle K':    `${BASE}logos/circleK.png`,
+  'Avenue Mart': `${BASE}logos/avenuemart.png`,
   'Netflix':     `${BASE}logos/netflix.png`,
   'Spotify':     `${BASE}logos/spotify.png`,
   'Starbucks':   `${BASE}logos/starbucks.png`,

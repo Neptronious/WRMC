@@ -18,7 +18,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Apr 21, 2026',
     transactions: [
-      { id: 'CK-3021',  brand: 'Circle K',    category: 'Groceries',       amount: 67.23  },
+      { id: 'AM-3021',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 67.23  },
       { id: 'NET-1847', brand: 'Netflix',      category: 'Subscriptions',   amount: 15.99  },
       { id: 'BBY-3022', brand: 'Best Buy',     category: 'Electronics',     amount: 399.99, status: 'failed' },
     ],
@@ -32,7 +32,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Apr 18, 2026',
     transactions: [
-      { id: 'CK-2847',  brand: 'Circle K',    category: 'Shopping',        amount: 87.43  },
+      { id: 'AM-2847',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 87.43  },
       { id: 'SPT-9182', brand: 'Spotify',      category: 'Entertainment',   amount: 14.99  },
     ],
   },
@@ -59,7 +59,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Apr 7, 2026',
     transactions: [
-      { id: 'CK-1983',  brand: 'Circle K',    category: 'Groceries',       amount: 112.34 },
+      { id: 'AM-1983',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 112.34 },
     ],
   },
 
@@ -67,7 +67,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Mar 28, 2026',
     transactions: [
-      { id: 'CK-2201',  brand: 'Circle K',    category: 'Groceries',       amount: 78.34  },
+      { id: 'AM-2201',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 78.34  },
     ],
   },
   {
@@ -106,7 +106,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Mar 8, 2026',
     transactions: [
-      { id: 'CK-2210',  brand: 'Circle K',    category: 'Shopping',        amount: 67.23  },
+      { id: 'AM-2210',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 67.23  },
     ],
   },
   {
@@ -126,7 +126,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Feb 26, 2026',
     transactions: [
-      { id: 'CK-2101',  brand: 'Circle K',    category: 'Groceries',       amount: 94.67  },
+      { id: 'AM-2101',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 94.67  },
     ],
   },
   {
@@ -165,7 +165,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Feb 5, 2026',
     transactions: [
-      { id: 'CK-2110',  brand: 'Circle K',    category: 'Shopping',        amount: 45.88  },
+      { id: 'AM-2110',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 45.88  },
     ],
   },
   {
@@ -179,7 +179,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Jan 28, 2026',
     transactions: [
-      { id: 'CK-2001',  brand: 'Circle K',    category: 'Groceries',       amount: 89.12  },
+      { id: 'AM-2001',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 89.12  },
     ],
   },
   {
@@ -223,7 +223,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Jan 2, 2026',
     transactions: [
-      { id: 'CK-2010',  brand: 'Circle K',    category: 'Shopping',        amount: 62.45  },
+      { id: 'AM-2010',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 62.45  },
     ],
   },
 
@@ -231,7 +231,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Dec 24, 2025',
     transactions: [
-      { id: 'CK-1901',  brand: 'Circle K',    category: 'Groceries',       amount: 156.78 },
+      { id: 'AM-1901',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 156.78 },
       { id: 'AMZ-1902', brand: 'Amazon',       category: 'Shopping',        amount: 89.45  },
     ],
   },
@@ -269,7 +269,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Dec 2, 2025',
     transactions: [
-      { id: 'CK-1909',  brand: 'Circle K',    category: 'Shopping',        amount: 78.34  },
+      { id: 'AM-1909',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 78.34  },
     ],
   },
 
@@ -277,7 +277,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Nov 28, 2025',
     transactions: [
-      { id: 'CK-1801',  brand: 'Circle K',    category: 'Groceries',       amount: 45.23  },
+      { id: 'AM-1801',  brand: 'Avenue Mart',    category: 'Groceries',       amount: 45.23  },
       { id: 'NET-1802', brand: 'Netflix',      category: 'Subscriptions',   amount: 15.99  },
     ],
   },
@@ -304,7 +304,7 @@ export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
   {
     date: 'Nov 15, 2025',
     transactions: [
-      { id: 'CK-1808',  brand: 'Circle K',    category: 'Shopping',        amount: 112.50 },
+      { id: 'AM-1808',  brand: 'Avenue Mart',    category: 'Shopping',        amount: 112.50 },
     ],
   },
   {

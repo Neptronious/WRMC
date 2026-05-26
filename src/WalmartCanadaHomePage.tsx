@@ -94,8 +94,12 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             </span>
           </div>
 
-          {/* Center spacer */}
-          <div style={{ width: 32, height: 32 }} />
+          {/* Center — Avenue Mart logo */}
+          <img
+            src={`${BASE}logos/avenuemart.png`}
+            alt="Avenue Mart"
+            style={{ height: 32, width: 'auto', objectFit: 'contain' }}
+          />
 
           {/* Right — Cart icon */}
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
