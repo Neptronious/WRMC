@@ -100,7 +100,7 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
             <Nudge
               title="Information auto-filled"
             >
-              We've fetched your personal information from your Walmart account to save you time. Please review and confirm the details below.
+              We've fetched your personal information from your Avenue Mart account to save you time. Please review and confirm the details below.
             </Nudge>
 
             {/* First name */}

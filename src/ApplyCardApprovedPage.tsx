@@ -22,7 +22,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 const BASE = import.meta.env.BASE_URL;
 
 const EARN_POINTS = [
-  { rate: 'Earn 3%', detail: 'when you shop in stores or online at our web store²' },
+  { rate: 'Earn 3%', detail: 'when you shop in stores or online at avenuemart.ca²' },
   { rate: 'Earn 1%', detail: 'when you shop everywhere else' },
   { rate: 'Delivery pass benefit', detail: 'enjoy up to 6 months free every year' },
 ];
@@ -265,7 +265,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <span style={{ fontSize: 11, color: '#74767c', fontFamily: FONT }}>
-                  For in-store use only
+                  For use in-store and online use in Avenue Mart only
                 </span>
               </div>
               <div style={{ padding: '4px 0' }}>

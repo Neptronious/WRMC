@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Spinner } from './components/ld/Spinner';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -33,8 +32,20 @@ export default function ApplyCardProcessingPage({ onComplete }: ApplyCardProcess
         padding: '0 32px',
       }}
     >
-      {/* ── Spinner ──────────────────────────────────────────────────────────── */}
-      <Spinner a11yLabel="Processing your application" size="large" color="neutral" />
+      {/* ── Circle loader ────────────────────────────────────────────────────── */}
+      <style>{`@keyframes am-spin { to { transform: rotate(360deg); } }`}</style>
+      <div
+        role="status"
+        aria-label="Processing your application"
+        style={{
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          border: '5px solid #f3f4f6',
+          borderTopColor: '#FFC107',
+          animation: 'am-spin 0.85s linear infinite',
+        }}
+      />
 
       {/* ── Text ─────────────────────────────────────────────────────────────── */}
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 8 }}>

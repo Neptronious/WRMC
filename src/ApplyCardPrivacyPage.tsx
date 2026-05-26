@@ -85,7 +85,7 @@ export default function ApplyCardPrivacyPage({ onDone, onContinue }: ApplyCardPr
                   Collection and Use of Personal Information
                 </h3>
                 <p style={{ margin: 0, fontSize: 14, lineHeight: 1.7, color: '#4a4b4d', fontFamily: FONT }}>
-                  Walmart Canada Corp. and President's Choice Bank (together, "we", "us", "our") collect your personal
+                  Avenue Mart Financial Corp. and President's Choice Bank (together, "we", "us", "our") collect your personal
                   information to process your credit card application, manage your account, and provide you with products
                   and services. This includes your name, address, date of birth, Social Insurance Number (where
                   permitted), income information, and credit history obtained from credit bureaus.
@@ -112,7 +112,7 @@ export default function ApplyCardPrivacyPage({ onDone, onContinue }: ApplyCardPr
                 <p style={{ margin: 0, fontSize: 14, lineHeight: 1.7, color: '#4a4b4d', fontFamily: FONT }}>
                   We may share your personal information with: credit bureaus and reporting agencies; service providers
                   who assist us in delivering products and services; government and regulatory authorities as required by
-                  law; and Walmart affiliated companies for the purpose of improving your experience and offering
+                  law; and Avenue Mart affiliated companies for the purpose of improving your experience and offering
                   relevant rewards and promotions. We do not sell your personal information to third parties.
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default function ApplyCardPrivacyPage({ onDone, onContinue }: ApplyCardPr
                   personal information. You may withdraw consent for marketing communications at any time, subject to
                   legal and contractual restrictions. To exercise your privacy rights or for questions about how we
                   handle your information, please contact our Privacy Officer at{' '}
-                  <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">privacy@walmart.ca</Link></span>.
+                  <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">privacy@avenuemart.ca</Link></span>.
                 </p>
               </div>
 
@@ -163,7 +163,7 @@ export default function ApplyCardPrivacyPage({ onDone, onContinue }: ApplyCardPr
           </Button>
           <p style={{ margin: 0, fontSize: 12, color: '#74767c', lineHeight: 1.6, textAlign: 'center', fontFamily: FONT }}>
             By clicking "Accept &amp; continue", I have read and agreed to the{' '}
-            <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">Walmart Rewards Mastercard Privacy Statement</Link></span>
+            <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">Avenue Mart Rewards Mastercard Privacy Statement</Link></span>
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 const LEGAL_SECTIONS = [
   {
     title: 'Consent to Credit Check',
-    body: `By submitting this application, you authorize Walmart Canada Corp. and President's Choice Bank to obtain your
+    body: `By submitting this application, you authorize Avenue Mart Financial Corp. and President's Choice Bank to obtain your
     credit report and credit score from one or more credit reporting agencies. This authorization remains valid for
     the duration of your account relationship with us. Credit checks may be conducted periodically to review your
     creditworthiness and determine your eligibility for credit limit increases or other account adjustments. A record
@@ -39,7 +39,7 @@ const LEGAL_SECTIONS = [
     title: 'Electronic Communications Agreement',
     body: `You agree to receive account statements, notices, and other communications related to your account
     electronically. Electronic communications will be provided via the email address you have provided or through
-    the Walmart app or website. You have the right to request paper copies of any communication at no cost by
+    the Avenue Mart app or website. You have the right to request paper copies of any communication at no cost by
     contacting us at 1-888-537-5089. You may withdraw consent to electronic communications at any time, although
     doing so may affect your ability to use certain account features.`,
   },

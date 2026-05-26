@@ -161,7 +161,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
                 0 43257 89123 4
               </p>
               <p style={{ margin: 0, textAlign: 'center', fontSize: 11, color: '#74767c', fontFamily: FONT }}>
-                For in-store use only
+                For use in-store and online use in Avenue Mart only
               </p>
             </div>
 

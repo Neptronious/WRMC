@@ -136,7 +136,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
                     fontFamily: FONT,
                   }}
                 >
-                  The annual interest rate for purchases made with the Walmart Rewards™ Mastercard® is 19.99%. Cash
+                  The annual interest rate for purchases made with the Avenue Mart Rewards™ Mastercard® is 19.99%. Cash
                   advances and balance transfers are subject to an annual interest rate of 22.99%. Interest is
                   calculated daily on the outstanding balance and charged monthly. A minimum interest charge of $1.00
                   applies if interest is owing. The interest-free grace period on purchases is 21 days from the
@@ -166,7 +166,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
                     fontFamily: FONT,
                   }}
                 >
-                  There is no annual fee for the Walmart Rewards™ Mastercard®. A cash advance fee of 3% of the
+                  There is no annual fee for the Avenue Mart Rewards™ Mastercard®. A cash advance fee of 3% of the
                   transaction amount (minimum $3.50) applies to each cash advance. Foreign currency transactions are
                   subject to a conversion fee of 2.5% of the transaction amount converted to Canadian dollars.
                   Returned payment fees of $25.00 apply for any payment that is not honoured by your financial
@@ -196,10 +196,10 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
                     fontFamily: FONT,
                   }}
                 >
-                  Cardholders earn Walmart Reward Dollars on eligible purchases. You earn 3% on purchases made at
-                  Walmart Canada stores and on walmart.ca, and 1.25% on all other eligible purchases made anywhere
+                  Cardholders earn Avenue Mart Reward Dollars on eligible purchases. You earn 3% on purchases made at
+                  Avenue Mart stores and on avenuemart.ca, and 1.25% on all other eligible purchases made anywhere
                   Mastercard is accepted. Rewards are credited to your account monthly and may be redeemed in
-                  increments of $5.00 toward future purchases at Walmart Canada. Rewards have no expiry date while
+                  increments of $5.00 toward future purchases at Avenue Mart. Rewards have no expiry date while
                   the account remains open and in good standing. Rewards have no cash value and cannot be redeemed
                   for cash.
                 </p>
