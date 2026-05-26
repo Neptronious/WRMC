@@ -12,6 +12,7 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 interface ManagePageProps {
   onBack: () => void;
   onNavSelect: (key: string) => void;
+  onReportLostStolen: () => void;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -117,7 +118,7 @@ function iconColor(_icon: IconName): string {
 
 // ── ManagePage ────────────────────────────────────────────────────────────────
 
-export default function ManagePage({ onBack, onNavSelect }: ManagePageProps) {
+export default function ManagePage({ onBack, onNavSelect: _onNavSelect, onReportLostStolen }: ManagePageProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#ffffff' }}>
 
@@ -185,6 +186,7 @@ export default function ManagePage({ onBack, onNavSelect }: ManagePageProps) {
                     {section.items.map((item, idx) => (
                       <React.Fragment key={item.title}>
                         <button
+                          onClick={item.title === 'Report lost or stolen' ? onReportLostStolen : undefined}
                           style={{
                             display: 'flex',
                             alignItems: 'center',

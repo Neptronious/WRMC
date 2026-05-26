@@ -31,6 +31,9 @@ import ApplyCardProcessingPage from "./ApplyCardProcessingPage";
 import ApplyCardApprovedPage from "./ApplyCardApprovedPage";
 import ActivateCardPage from "./ActivateCardPage";
 import TemporaryShoppingPassPage from "./TemporaryShoppingPassPage";
+import ReportLostStolenPage from "./ReportLostStolenPage";
+import ReportLostStolenReviewPage from "./ReportLostStolenReviewPage";
+import ReportLostStolenConfirmationPage from "./ReportLostStolenConfirmationPage";
 
 // Maps bottom-nav keys to URL paths
 const NAV_PATH_MAP: Record<string, string> = {
@@ -51,6 +54,7 @@ export default function App() {
   const navigate = useNavigate();
   const [paymentMade, setPaymentMade] = useState(false);
   const [lastPayment, setLastPayment] = useState<{ amount: string; date: string } | null>(null);
+  const [reportReason, setReportReason] = useState('I have lost my card');
 
   // ── Apply card flow state ──────────────────────────────────────────────────
   const [applyEmail, setApplyEmail] = useState('');
@@ -143,6 +147,7 @@ export default function App() {
         <ManagePage
           onBack={() => navigate('/credit-card-home')}
           onNavSelect={handleNavSelect}
+          onReportLostStolen={() => navigate('/report-lost-stolen')}
         />
       } />
 
@@ -241,6 +246,28 @@ export default function App() {
         <ActivateCardPage
           onDone={() => navigate('/apply-card/approved')}
           onActivated={() => navigate('/credit-card-home')}
+        />
+      } />
+
+      <Route path="/report-lost-stolen" element={
+        <ReportLostStolenPage
+          onBack={() => navigate('/manage')}
+          onContinue={(reason, _description) => { setReportReason(reason); navigate('/report-lost-stolen/review'); }}
+        />
+      } />
+
+      <Route path="/report-lost-stolen/review" element={
+        <ReportLostStolenReviewPage
+          onBack={() => navigate('/report-lost-stolen')}
+          onRecognize={() => navigate('/report-lost-stolen/confirmation')}
+        />
+      } />
+
+      <Route path="/report-lost-stolen/confirmation" element={
+        <ReportLostStolenConfirmationPage
+          onBack={() => navigate('/credit-card-home')}
+          onGoHome={() => navigate('/credit-card-home')}
+          reason={reportReason}
         />
       } />
 

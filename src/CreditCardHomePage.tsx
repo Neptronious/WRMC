@@ -234,7 +234,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                 {/* Right: Pay now button */}
                 {!paymentMade && (
                   <div style={{ flexShrink: 0 }}>
-                    <Button variant="primary" size="small" onClick={onPayNow}>
+                    <Button variant="primary" size="medium" onClick={onPayNow}>
                       Pay now
                     </Button>
                   </div>
