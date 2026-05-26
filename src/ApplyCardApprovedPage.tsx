@@ -22,8 +22,8 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 const BASE = import.meta.env.BASE_URL;
 
 const EARN_POINTS = [
-  { rate: 'Earn 3%', detail: 'when you shop in stores or online at Walmart.ca²' },
-  { rate: 'Earn 1%', detail: 'when you shop outside of Walmart' },
+  { rate: 'Earn 3%', detail: 'when you shop in stores or online at our web store²' },
+  { rate: 'Earn 1%', detail: 'when you shop everywhere else' },
   { rate: 'Delivery pass benefit', detail: 'enjoy up to 6 months free every year' },
 ];
 
@@ -36,7 +36,7 @@ interface RedeemSection {
 const REDEEM_SECTIONS: RedeemSection[] = [
   {
     icon: 'Facility',
-    title: 'Walmart store checkout',
+    title: 'Store checkout',
     bullets: [
       'Swipe your physical card at the terminal.',
       'It will ask if you want to apply Reward Dollars.',
@@ -45,7 +45,7 @@ const REDEEM_SECTIONS: RedeemSection[] = [
   },
   {
     icon: 'Globe',
-    title: 'Walmart.ca',
+    title: 'Web store',
     bullets: [
       'At checkout, select "Redeem Reward Dollars".',
       'Choose your amount in $5 increments.',
@@ -87,7 +87,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
       {/* ── Header ────────────────────────────────────────────────────────────── */}
-      <div style={{ width: '100%', flexShrink: 0, backgroundColor: '#0053e2' }}>
+      <div style={{ width: '100%', flexShrink: 0, backgroundColor: '#FFC107' }}>
 
         {/* Row 1: Hi Jean + logo + cart */}
         <div
@@ -102,16 +102,15 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#ffffff', fontSize: 22, display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: '#2e2f32', fontSize: 22, display: 'flex', alignItems: 'center' }}>
               <LivingDesignFontIcon name="UserCircle" />
             </span>
-            <span style={{ color: '#ffffff', fontFamily: FONT, fontSize: 14, fontWeight: 600 }}>
+            <span style={{ color: '#2e2f32', fontFamily: FONT, fontSize: 14, fontWeight: 600 }}>
               Hi Jean
             </span>
           </div>
-          <img src={`${BASE}logos/walmart.png`} alt="Walmart" style={{ width: 32, height: 32, objectFit: 'contain' }} />
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path fill="#ffffff" d="M12 24a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm13 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM5.702 4a1.4 1.4 0 0 1 1.341.998L7.343 6h21.259a1.4 1.4 0 0 1 1.366 1.704l-1.83 8.233a1.4 1.4 0 0 1-1.211 1.088l-16.308 1.813A.583.583 0 0 0 10.684 20H27v2H10.684a2.583 2.583 0 0 1-.286-5.15l15.881-1.765L27.854 8H7.944l2.014 6.713-1.916.574L5.256 6H2V4h3.702Z" />
+            <path fill="#2e2f32" d="M12 24a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm13 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM5.702 4a1.4 1.4 0 0 1 1.341.998L7.343 6h21.259a1.4 1.4 0 0 1 1.366 1.704l-1.83 8.233a1.4 1.4 0 0 1-1.211 1.088l-16.308 1.813A.583.583 0 0 0 10.684 20H27v2H10.684a2.583 2.583 0 0 1-.286-5.15l15.881-1.765L27.854 8H7.944l2.014 6.713-1.916.574L5.256 6H2V4h3.702Z" />
           </svg>
         </div>
 
@@ -135,7 +134,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
             </span>
             <input
               type="text"
-              placeholder="Search everything at Walmart"
+              placeholder="Search everything"
               style={{
                 width: '100%',
                 padding: '9px 12px 9px 36px',
@@ -153,7 +152,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
           <button
             type="button"
             aria-label="Cart"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 4, flexShrink: 0, lineHeight: 1 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#2e2f32', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 4, flexShrink: 0, lineHeight: 1 }}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="9" cy="21" r="1" fill="currentColor" stroke="none" />
@@ -166,15 +165,15 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
         {/* Row 3: delivery / pickup selector */}
         <div style={{ maxWidth: 600, margin: '0 auto', padding: '2px 16px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
-            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <span style={{ fontSize: 14, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               How would you want your items?
             </span>
             <span style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, fontSize: 16, fontWeight: 300, lineHeight: 1 }}>|</span>
-            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
+            <span style={{ fontSize: 14, color: '#2e2f32', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
               V6B 2Y5
             </span>
           </div>
-          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+          <span style={{ color: '#2e2f32', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
             <LivingDesignFontIcon name="ChevronDown" />
           </span>
         </div>
@@ -211,7 +210,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
                 You're approved
               </h1>
               <p style={{ margin: 0, fontSize: 15, color: '#74767c', fontFamily: FONT }}>
-                Welcome to Walmart Rewards Mastercard
+                Welcome to Rewards Mastercard
               </p>
             </div>
 
@@ -224,14 +223,14 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
                     width: 40,
                     height: 40,
                     borderRadius: '50%',
-                    backgroundColor: '#eff6ff',
+                    backgroundColor: '#FFF7BF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
                   }}
                 >
-                  <span style={{ color: '#0053e2', fontSize: 18, display: 'flex' }}>
+                  <span style={{ color: '#2e2f32', fontSize: 18, display: 'flex' }}>
                     <LivingDesignFontIcon name="Clock" />
                   </span>
                 </div>
@@ -264,14 +263,9 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
                 gap: 12,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <img
-                  src={`${BASE}logos/walmart.png`}
-                  alt="Walmart"
-                  style={{ height: 24, objectFit: 'contain' }}
-                />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <span style={{ fontSize: 11, color: '#74767c', fontFamily: FONT }}>
-                  For use at Walmart only
+                  For in-store use only
                 </span>
               </div>
               <div style={{ padding: '4px 0' }}>
@@ -314,7 +308,7 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {EARN_POINTS.map((pt, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                      <span style={{ color: '#0053e2', flexShrink: 0, marginTop: 1 }}>
+                      <span style={{ color: '#2e2f32', flexShrink: 0, marginTop: 1 }}>
                         <LivingDesignFontIcon name="CheckCircleFill" />
                       </span>
                       <p style={{ margin: 0, fontSize: 14, color: '#2e2f32', fontFamily: FONT, lineHeight: 1.5 }}>
@@ -344,12 +338,12 @@ export default function ApplyCardApprovedPage({ onActivateCard, onGoToCreditCard
                               width: 32,
                               height: 32,
                               borderRadius: 8,
-                              backgroundColor: '#eff6ff',
+                              backgroundColor: '#FFF7BF',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               flexShrink: 0,
-                              color: '#0053e2',
+                              color: '#2e2f32',
                             }}
                           >
                             <LivingDesignFontIcon name={section.icon} />

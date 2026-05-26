@@ -108,11 +108,11 @@ const SECTIONS: MenuSection[] = [
 // ── Icon background colours ───────────────────────────────────────────────────
 
 function iconBg(_icon: IconName): string {
-  return '#eff6ff';
+  return '#FFF7BF';
 }
 
 function iconColor(_icon: IconName): string {
-  return '#0053e2';
+  return '#FFC107';
 }
 
 // ── ManagePage ────────────────────────────────────────────────────────────────
@@ -124,7 +124,7 @@ export default function ManagePage({ onBack, onNavSelect }: ManagePageProps) {
       {/* ── Blue header ─────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -137,7 +137,6 @@ export default function ManagePage({ onBack, onNavSelect }: ManagePageProps) {
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -150,7 +149,7 @@ export default function ManagePage({ onBack, onNavSelect }: ManagePageProps) {
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}

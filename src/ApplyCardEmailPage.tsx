@@ -36,7 +36,7 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
       {/* ── Top bar ──────────────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '8px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -44,10 +44,10 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
           flexShrink: 0,
         }}
       >
-        <LinkButton type="button" size="medium" color="white" onClick={onDone}>
+        <LinkButton type="button" size="medium" onClick={onDone}>
           Done
         </LinkButton>
-        <IconButton a11yLabel="Refresh application" variant="round" size="medium" color="white">
+        <IconButton a11yLabel="Refresh application" variant="round" size="medium" >
           <LivingDesignFontIcon name="Refresh" />
         </IconButton>
       </div>
@@ -55,7 +55,7 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
       {/* ── Blue title bar ───────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -64,7 +64,7 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
           flexShrink: 0,
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
           Card Application
         </h1>
       </div>
@@ -102,7 +102,7 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
           </Button>
           <p style={{ margin: 0, fontSize: 12, color: '#74767c', lineHeight: 1.6, textAlign: 'center', fontFamily: FONT }}>
             By clicking "Continue", you have read and agreed to the{' '}
-            <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">Walmart Rewards Mastercard Privacy Statement</Link></span>
+            <span style={{ '--ld-semantic-color-text-link': '#2e2f32' } as React.CSSProperties}><Link href="#" color="default">Rewards Mastercard Privacy Statement</Link></span>
           </p>
         </div>
       </div>

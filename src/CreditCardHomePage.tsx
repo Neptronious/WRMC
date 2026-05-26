@@ -32,11 +32,15 @@ const DUMMY = {
   rewardsBalance: '$24.50',
 };
 
+// Dynamic due date: 5 days from today
+const DUE_DATE = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)
+  .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
 // Values before payment
 const PRE_PAYMENT = {
   statementBalance: '$542.30',
   totalBalance: '$1,284.75',
-  dueDate: 'May 15, 2026',
+  dueDate: DUE_DATE,
   availableCredit: '$2,715.25',
 };
 
@@ -44,20 +48,25 @@ const PRE_PAYMENT = {
 const POST_PAYMENT = {
   statementBalance: 'Paid',
   totalBalance: `$${(TOTAL_BALANCE - STATEMENT_PAID).toFixed(2)}`,
-  dueDate: 'Jun 15, 2026',
+  dueDate: DUE_DATE,
   availableCredit: `$${(AVAILABLE_CREDIT + STATEMENT_PAID).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
 };
 
 // ── Brand logo URLs ──────────────────────────────────────────────
 const BASE = import.meta.env.BASE_URL;
 const BRAND_LOGOS: Record<string, string> = {
-  'Walmart': `${BASE}logos/walmart.png`,
-  'Netflix': `${BASE}logos/netflix.png`,
-  'Spotify': `${BASE}logos/spotify.png`,
-  'Starbucks': `${BASE}logos/starbucks.png`,
-  'Apple': `${BASE}logos/apple.png`,
-  'Shell Gas': `${BASE}logos/shell.png`,
-  'Uber': `${BASE}logos/uber.png`,
+  'Circle K':    `${BASE}logos/circleK.png`,
+  'Netflix':     `${BASE}logos/netflix.png`,
+  'Spotify':     `${BASE}logos/spotify.png`,
+  'Starbucks':   `${BASE}logos/starbucks.png`,
+  'Apple':       `${BASE}logos/apple.png`,
+  'Shell Gas':   `${BASE}logos/shell.png`,
+  'Uber':        `${BASE}logos/uber.png`,
+  'Amazon':      `${BASE}logos/amazon.png`,
+  'Tim Hortons': `${BASE}logos/timhortons.png`,
+  "McDonald's":  `${BASE}logos/mcdonalds.png`,
+  'Home Depot':  `${BASE}logos/homedepot.png`,
+  'Best Buy':    `${BASE}logos/bestbuy.png`,
 };
 
 // Get latest 5 transactions for display
@@ -75,10 +84,10 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#ffffff' }}>
 
-      {/* ── Blue header ─────────────────────────────────────────── */}
+      {/* ── Header ─────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -91,7 +100,6 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -104,7 +112,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
@@ -121,7 +129,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
             {/* ── User greeting + card info ────────────────────── */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'space-between' }}>
 
-              {/* Walmart Rewards Mastercard icon */}
+              {/* Rewards Mastercard icon */}
               <div
                 style={{
                   width: 56,
@@ -138,7 +146,7 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                  alt="Walmart Rewards Mastercard"
+                  alt="Rewards Mastercard"
                   style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 />
               </div>
@@ -192,10 +200,10 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
             {/* ── Credit card summary card ─────────────────────── */}
             <div style={{ borderRadius: 8, overflow: 'hidden', boxShadow: '0 0.0625rem 0.125rem 0.0625rem rgba(0,0,0,0.149), 0 -0.0625rem 0.125rem 0 rgba(0,0,0,0.102)' }}>
 
-              {/* Upper half — light blue */}
+              {/* Upper half — light yellow */}
               <div
                 style={{
-                  backgroundColor: '#dbeafe',
+                  backgroundColor: '#FFF7BF',
                   padding: '20px 20px 16px',
                   display: 'flex',
                   alignItems: 'center',
@@ -279,14 +287,14 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
                       width: 44,
                       height: 44,
                       borderRadius: '50%',
-                      backgroundColor: '#eff6ff',
+                      backgroundColor: '#FFF7BF',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                     }}
                   >
-                    <span style={{ color: '#0053e2' }}>
+                    <span style={{ color: '#2e2f32' }}>
                       <LivingDesignFontIcon name="Star" />
                     </span>
                   </div>

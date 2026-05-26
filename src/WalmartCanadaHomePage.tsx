@@ -69,7 +69,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
           style={{
             maxWidth: 600,
             margin: '0 auto',
-            backgroundColor: '#0053E2',
+            backgroundColor: '#FFC107',
             padding: '0 16px',
             height: 52,
             display: 'flex',
@@ -79,12 +79,12 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
         >
           {/* Left — Profile icon + Sign in */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#ffffff', fontSize: 22, display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: '#2e2f32', fontSize: 22, display: 'flex', alignItems: 'center' }}>
               <LivingDesignFontIcon name="UserCircle" />
             </span>
             <span
               style={{
-                color: '#ffffff',
+                color: '#2e2f32',
                 fontFamily: FONT,
                 fontSize: 14,
                 fontWeight: 600,
@@ -94,12 +94,8 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             </span>
           </div>
 
-          {/* Center — Walmart spark logo */}
-          <img
-            src={`${BASE}logos/walmart.png`}
-            alt="Walmart"
-            style={{ width: 32, height: 32, objectFit: 'contain' }}
-          />
+          {/* Center spacer */}
+          <div style={{ width: 32, height: 32 }} />
 
           {/* Right — Cart icon */}
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -110,7 +106,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
 
       {/* ── Search bar ──────────────────────────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0 }}>
-        <div style={{ maxWidth: 600, margin: '0 auto', backgroundColor: '#0053E2', padding: '10px 16px' }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', backgroundColor: '#FFC107', padding: '10px 16px' }}>
           <div
             style={{
               display: 'flex',
@@ -132,7 +128,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             {/* Input */}
             <input
               type="text"
-              placeholder="Search Walmart"
+              placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
@@ -160,17 +156,17 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
 
       {/* ── Delivery / pickup selector row ─────────────────────────────────── */}
       <div style={{ width: '100%', flexShrink: 0 }}>
-        <div style={{ maxWidth: 600, margin: '0 auto', backgroundColor: '#0053E2', padding: '4px 16px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', backgroundColor: '#FFC107', padding: '4px 16px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
-            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <span style={{ fontSize: 14, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               How would you want your items?
             </span>
             <span style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, fontSize: 16, fontWeight: 300, lineHeight: 1 }}>|</span>
-            <span style={{ fontSize: 14, color: '#ffffff', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
+            <span style={{ fontSize: 14, color: '#2e2f32', fontFamily: FONT, fontWeight: 700, flexShrink: 0 }}>
               V6B 2Y5
             </span>
           </div>
-          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+          <span style={{ color: '#2e2f32', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
             <LivingDesignFontIcon name="ChevronDown" />
           </span>
         </div>
@@ -213,7 +209,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
                     border: 'none',
                     cursor: 'pointer',
                     padding: '8px 10px',
-                    color: '#ffffff',
+                    color: '#2e2f32',
                     fontFamily: FONT,
                     fontSize: 14,
                     fontWeight: link.bold ? 700 : 400,

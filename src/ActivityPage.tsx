@@ -24,13 +24,18 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 // ── Brand logo URLs ──────────────────────────────────────────────
 const BASE = import.meta.env.BASE_URL;
 const BRAND_LOGOS: Record<string, string> = {
-  'Walmart': `${BASE}logos/walmart.png`,
-  'Netflix': `${BASE}logos/netflix.png`,
-  'Spotify': `${BASE}logos/spotify.png`,
-  'Starbucks': `${BASE}logos/starbucks.png`,
-  'Apple': `${BASE}logos/apple.png`,
-  'Shell Gas': `${BASE}logos/shell.png`,
-  'Uber': `${BASE}logos/uber.png`,
+  'Circle K':    `${BASE}logos/circleK.png`,
+  'Netflix':     `${BASE}logos/netflix.png`,
+  'Spotify':     `${BASE}logos/spotify.png`,
+  'Starbucks':   `${BASE}logos/starbucks.png`,
+  'Apple':       `${BASE}logos/apple.png`,
+  'Shell Gas':   `${BASE}logos/shell.png`,
+  'Uber':        `${BASE}logos/uber.png`,
+  'Amazon':      `${BASE}logos/amazon.png`,
+  'Tim Hortons': `${BASE}logos/timhortons.png`,
+  "McDonald's":  `${BASE}logos/mcdonalds.png`,
+  'Home Depot':  `${BASE}logos/homedepot.png`,
+  'Best Buy':    `${BASE}logos/bestbuy.png`,
 };
 
 // ── Statement data ────────────────────────────────────────────────────────────
@@ -75,7 +80,7 @@ const STATEMENT_GROUPS: StatementGroup[] = [
 
 const CATEGORY_OPTIONS = ['Dining out', 'Electronics', 'Entertainment', 'Gas & fuel', 'Groceries', 'Healthcare & wellness', 'Shopping', 'Subscriptions', 'Travel', 'Utilities'];
 const TYPE_OPTIONS     = ['Purchase', 'Refund'];
-const DATE_OPTIONS     = ['Last 7 days', 'Last 30 days', 'Last 3 months'];
+const DATE_OPTIONS     = ['Last 7 days', 'Last 30 days', 'Last 3 months', 'Last 6 months'];
 
 type FilterKey = 'Category' | 'Type' | 'Date range';
 
@@ -87,17 +92,16 @@ const FILTER_OPTIONS: Record<FilterKey, string[]> = {
 
 // ── Date helpers ──────────────────────────────────────────────────────────────
 
-const TODAY = new Date('2026-04-21');
-
 function parseGroupDate(dateStr: string): Date {
   return new Date(dateStr);
 }
 
 function getDateCutoff(range: string): Date {
-  const d = new Date(TODAY);
+  const d = new Date();
   if (range === 'Last 7 days')   { d.setDate(d.getDate() - 7);    return d; }
   if (range === 'Last 30 days')  { d.setDate(d.getDate() - 30);   return d; }
   if (range === 'Last 3 months') { d.setMonth(d.getMonth() - 3);  return d; }
+  if (range === 'Last 6 months') { d.setMonth(d.getMonth() - 6);  return d; }
   return new Date(0);
 }
 
@@ -228,7 +232,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
       {/* ── Blue header ─────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -241,7 +245,6 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -254,7 +257,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
@@ -287,9 +290,9 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                 cursor: 'pointer',
                 fontSize: 14,
                 fontWeight: isActive ? 700 : 400,
-                color: isActive ? '#0053e2' : '#74767c',
+                color: isActive ? '#2e2f32' : '#74767c',
                 fontFamily: FONT,
-                borderBottom: isActive ? '2px solid #0053e2' : '2px solid transparent',
+                borderBottom: isActive ? '2px solid #FFC107' : '2px solid transparent',
                 marginBottom: -1,
               }}
               aria-selected={isActive}
@@ -372,15 +375,15 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                       gap: 6,
                       padding: '6px 12px',
                       borderRadius: 9999,
-                      border: `1.5px solid ${isActive ? '#0053e2' : '#d1d5db'}`,
-                      backgroundColor: isActive ? '#eff6ff' : '#ffffff',
+                      border: `1.5px solid ${isActive ? '#FFC107' : '#d1d5db'}`,
+                      backgroundColor: isActive ? '#FFF7BF' : '#ffffff',
                       cursor: 'pointer',
                       whiteSpace: 'nowrap',
                       flexShrink: 0,
                       fontFamily: FONT,
                       fontSize: 13,
                       fontWeight: isActive ? 600 : 400,
-                      color: isActive ? '#0053e2' : '#2e2f32',
+                      color: '#2e2f32',
                     }}
                   >
                     {filter}
@@ -393,8 +396,8 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                           width: 18,
                           height: 18,
                           borderRadius: '50%',
-                          backgroundColor: '#0053e2',
-                          color: '#ffffff',
+                          backgroundColor: '#2e2f32',
+                          color: '#FFC107',
                           fontSize: 11,
                           fontWeight: 700,
                           lineHeight: 1,
@@ -404,7 +407,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                         {count}
                       </span>
                     )}
-                    <span style={{ color: isActive ? '#0053e2' : '#74767c', fontSize: 14, display: 'flex', alignItems: 'center' }}>
+                    <span style={{ color: '#74767c', fontSize: 14, display: 'flex', alignItems: 'center' }}>
                       <LivingDesignFontIcon name="ChevronDown" />
                     </span>
                   </button>

@@ -35,7 +35,7 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSel
       {/* ── Blue header ─────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -48,7 +48,7 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSel
           a11yLabel="Go to credit card home"
           variant="round"
           size="medium"
-          color="white"
+          
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -61,7 +61,7 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSel
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}

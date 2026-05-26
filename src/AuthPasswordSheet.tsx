@@ -102,14 +102,6 @@ export default function AuthPasswordSheet({
             }}
           >
 
-            {/* ── Walmart spark icon — centered ────────────────────────── */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <img
-                src={`${BASE}logos/walmart.png`}
-                alt="Walmart"
-                style={{ width: 56, height: 56, objectFit: 'contain' }}
-              />
-            </div>
 
             {/* ── "Welcome back!" heading ───────────────────────────────── */}
             <h2

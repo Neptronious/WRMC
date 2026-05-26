@@ -47,7 +47,7 @@ const RECENT_REWARDS: RewardActivity[] = [
   {
     id: 'rw-002',
     type: 'redeemed',
-    title: 'Redeemed at Walmart',
+    title: 'Redeemed at Store',
     subtitle: 'Mar 22, 2026',
     amount: -10.00,
   },
@@ -68,15 +68,15 @@ const RECENT_REWARDS: RewardActivity[] = [
   {
     id: 'rw-005',
     type: 'redeemed',
-    title: 'Redeemed at Walmart.ca',
+    title: 'Redeemed at Web store',
     subtitle: 'Feb 15, 2026',
     amount: -5.00,
   },
 ];
 
 const EARN_POINTS = [
-  { rate: 'Earn 3%', detail: 'when you shop in stores or online at Walmart.ca²' },
-  { rate: 'Earn 1%', detail: 'when you shop outside of Walmart' },
+  { rate: 'Earn 3%', detail: 'when you shop in stores or online at our web store²' },
+  { rate: 'Earn 1%', detail: 'when you shop everywhere else' },
   { rate: 'Delivery pass benefit', detail: 'enjoy up to 6 months free every year' },
 ];
 
@@ -89,7 +89,7 @@ interface RedeemSection {
 const REDEEM_SECTIONS: RedeemSection[] = [
   {
     icon: 'Facility',
-    title: 'Walmart store checkout',
+    title: 'Store checkout',
     bullets: [
       'Swipe your physical card at the terminal.',
       'It will ask if you want to apply Reward Dollars.',
@@ -98,7 +98,7 @@ const REDEEM_SECTIONS: RedeemSection[] = [
   },
   {
     icon: 'Globe',
-    title: 'Walmart.ca',
+    title: 'Web store',
     bullets: [
       'At checkout, select "Redeem Reward Dollars".',
       'Choose your amount in $5 increments.',
@@ -137,11 +137,11 @@ function rewardIcon(type: RewardType) {
 }
 
 function rewardIconColor(_type: RewardType): string {
-  return '#0053e2';
+  return '#2e2f32';
 }
 
 function rewardIconBg(_type: RewardType): string {
-  return '#eff6ff';
+  return '#FFF7BF';
 }
 
 // ── RewardsPage ───────────────────────────────────────────────────────────────
@@ -155,7 +155,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
       {/* ── Blue header ─────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -168,7 +168,6 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
           a11yLabel="Go back"
           variant="round"
           size="small"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -181,7 +180,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
@@ -201,7 +200,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
               {/* Upper half — light blue */}
               <div
                 style={{
-                  backgroundColor: '#dbeafe',
+                  backgroundColor: '#FFF7BF',
                   padding: '24px 24px 24px',
                   textAlign: 'center',
                 }}
@@ -222,7 +221,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                   ${REWARDS_BALANCE.toFixed(2)}
                 </h2>
                 <p style={{ margin: 0, fontSize: 13, color: '#2e2f32', fontFamily: FONT }}>
-                  ready to use at Walmart
+                  ready to use in-store
                 </p>
               </div>
 
@@ -339,7 +338,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {EARN_POINTS.map((pt, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                      <span style={{ color: '#0053e2', flexShrink: 0, marginTop: 1 }}>
+                      <span style={{ color: '#2e2f32', flexShrink: 0, marginTop: 1 }}>
                         <LivingDesignFontIcon name="CheckCircleFill" />
                       </span>
                       <p style={{ margin: 0, fontSize: 14, color: '#2e2f32', fontFamily: FONT, lineHeight: 1.5 }}>
@@ -370,12 +369,12 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                               width: 40,
                               height: 40,
                               borderRadius: '50%',
-                              backgroundColor: '#eff6ff',
+                              backgroundColor: '#FFF7BF',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               flexShrink: 0,
-                              color: '#0053e2',
+                              color: '#2e2f32',
                             }}
                           >
                             <LivingDesignFontIcon name={section.icon} />
@@ -460,7 +459,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                           style={{
                             margin: 0,
                             fontSize: 10,
-                            color: m.partial ? '#74767c' : '#0053e2',
+                            color: m.partial ? '#74767c' : '#2e2f32',
                             fontFamily: FONT,
                             fontWeight: 600,
                           }}
@@ -474,7 +473,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                             width: '100%',
                             height: barHeight,
                             borderRadius: '4px 4px 0 0',
-                            backgroundColor: m.partial ? '#bfdbfe' : '#0053e2',
+                            backgroundColor: m.partial ? '#FFF7BF' : '#FFC107',
                           }}
                         />
 

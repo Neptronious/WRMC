@@ -35,8 +35,24 @@ export interface ThemePreset {
 export const THEME_PRESETS: Record<string, ThemePreset> = {
   'Walmart': {
     description: 'Default Walmart theme',
-    primaryColor: '#0053e2',
-    overrides: {},
+    primaryColor: '#FFC107',
+    overrides: {
+      '--ld-semantic-color-action-fill-primary': '#FFC107',
+      '--ld-semantic-color-action-fill-primary-hovered': '#E6AD07',
+      '--ld-semantic-color-action-fill-primary-focused': '#E6AD07',
+      '--ld-semantic-color-action-fill-primary-pressed': '#CC9A07',
+      '--ld-semantic-color-action-text-on-fill-primary': '#2e2f32',
+      '--ld-semantic-color-action-border-secondary': '#FFC107',
+      '--ld-semantic-color-action-text-on-fill-secondary': '#2e2f32',
+      '--ld-semantic-color-action-fill-secondary-focused': '#FFF7BF',
+      '--ld-semantic-color-action-fill-secondary-hovered': '#FFF7BF',
+      '--ld-semantic-color-action-fill-secondary-pressed': '#FFE680',
+      '--ld-semantic-color-text-brand': '#996900',
+      '--ld-semantic-color-border-brand': '#FFC107',
+      '--ld-semantic-color-border-activated': '#FFC107',
+      '--ld-semantic-color-fill-brand': '#FFC107',
+      '--ld-semantic-color-fill-brand-subtle': '#FFF7BF',
+    },
   },
   "Sam's Club": {
     description: 'Member warehouse club with Gibson font family',

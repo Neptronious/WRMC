@@ -52,7 +52,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
       {/* ── Blue header ───────────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -65,7 +65,6 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -78,7 +77,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
@@ -122,7 +121,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
 
             {/* ── Success alert ─────────────────────────────────────────────────── */}
             <Alert variant="success">
-              Temporary shopping pass has been added to your Walmart wallet
+              Temporary shopping pass has been added to your wallet
             </Alert>
 
             {/* ── Shopping pass card ────────────────────────────────────────────── */}
@@ -136,12 +135,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
                 gap: 12,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <img
-                  src={`${BASE}logos/walmart.png`}
-                  alt="Walmart"
-                  style={{ height: 24, objectFit: 'contain', display: 'block' }}
-                />
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
                   <span style={{ fontSize: 10, color: '#74767c', fontFamily: FONT, display: 'block' }}>
                     Valid through
@@ -167,7 +161,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
                 0 43257 89123 4
               </p>
               <p style={{ margin: 0, textAlign: 'center', fontSize: 11, color: '#74767c', fontFamily: FONT }}>
-                For use at Walmart only
+                For in-store use only
               </p>
             </div>
 
@@ -210,14 +204,14 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
                       width: 44,
                       height: 44,
                       borderRadius: '50%',
-                      backgroundColor: '#f0f4ff',
+                      backgroundColor: '#FFF7BF',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                     }}
                   >
-                    <span style={{ color: '#0053e2' }}>
+                    <span style={{ color: '#2e2f32' }}>
                       <LivingDesignFontIcon name="Star" />
                     </span>
                   </div>

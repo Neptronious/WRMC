@@ -186,7 +186,7 @@ export default function MoneyTransferPage() {
                       <strong>{recipientName}</strong> has been submitted.
                     </p>
                     <p style={{ color: '#74767c', margin: '0 0 24px 0', fontSize: 15 }}>
-                      Reference number: <strong style={{ color: '#0053e2' }}>WMT-{Math.floor(Math.random() * 9000000 + 1000000)}</strong>
+                      Reference number: <strong style={{ color: '#FFC107' }}>WMT-{Math.floor(Math.random() * 9000000 + 1000000)}</strong>
                     </p>
                     <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
                       <Button
@@ -319,13 +319,13 @@ export default function MoneyTransferPage() {
                           </Grid>
 
                           {/* Exchange Rate Banner */}
-                          <div style={{ backgroundColor: '#f0f4ff', borderRadius: 8, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <span style={{ color: '#0053e2' }}>
+                          <div style={{ backgroundColor: '#FFF7BF', borderRadius: 8, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                            <span style={{ color: '#FFC107' }}>
                               <LivingDesignFontIcon name="Refresh" />
                             </span>
                             <div style={{ fontSize: 14, color: '#2e2f32' }}>
                               <strong>Exchange Rate:</strong>{' '}
-                              1 {sendCurrency} = <strong style={{ color: '#0053e2' }}>{exchangeRate.toFixed(4)} {receiveCurrency}</strong>
+                              1 {sendCurrency} = <strong style={{ color: '#FFC107' }}>{exchangeRate.toFixed(4)} {receiveCurrency}</strong>
                               <span style={{ color: '#74767c', marginLeft: 8, fontSize: 13 }}>
                                 (updated just now)
                               </span>
@@ -384,7 +384,7 @@ export default function MoneyTransferPage() {
                                     <div style={{ fontSize: 12, color: '#74767c', marginTop: 2 }}>{row.hint}</div>
                                   )}
                                 </div>
-                                <div style={{ fontSize: 14, color: row.bold ? '#0053e2' : '#2e2f32', fontWeight: row.bold ? 700 : 400 }}>
+                                <div style={{ fontSize: 14, color: row.bold ? '#FFC107' : '#2e2f32', fontWeight: row.bold ? 700 : 400 }}>
                                   {row.value}
                                 </div>
                               </div>
@@ -392,9 +392,9 @@ export default function MoneyTransferPage() {
                             </React.Fragment>
                           ))}
 
-                          <div style={{ margin: '16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f0f4ff', borderRadius: 8, padding: '12px 16px' }}>
+                          <div style={{ margin: '16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#FFF7BF', borderRadius: 8, padding: '12px 16px' }}>
                             <div style={{ fontWeight: 700, fontSize: 15, color: '#2e2f32' }}>Total You Pay</div>
-                            <div style={{ fontWeight: 700, fontSize: 18, color: '#0053e2' }}>
+                            <div style={{ fontWeight: 700, fontSize: 18, color: '#FFC107' }}>
                               {sendCurrency} {totalCost}
                             </div>
                           </div>
@@ -455,7 +455,7 @@ export default function MoneyTransferPage() {
                           { icon: 'CheckCircle', label: 'Money-back guarantee', sub: 'Full refund if transfer fails' },
                         ].map((item) => (
                           <div key={item.label} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                            <span style={{ color: '#0053e2', flexShrink: 0, marginTop: 2 }}>
+                            <span style={{ color: '#FFC107', flexShrink: 0, marginTop: 2 }}>
                               <LivingDesignFontIcon name={item.icon as any} />
                             </span>
                             <div>
@@ -489,7 +489,7 @@ export default function MoneyTransferPage() {
                           <div style={{ margin: '8px 0' }}><Divider /></div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 15 }}>
                             <span style={{ fontWeight: 700 }}>Recipient gets</span>
-                            <span style={{ fontWeight: 700, color: '#0053e2' }}>{receiveCurrency} {receiveAmount}</span>
+                            <span style={{ fontWeight: 700, color: '#FFC107' }}>{receiveCurrency} {receiveAmount}</span>
                           </div>
                           <div style={{ marginTop: 8 }}>
                             <Button variant="primary" isFullWidth onClick={handleNextStep} size="medium">
@@ -506,7 +506,7 @@ export default function MoneyTransferPage() {
                     <Card>
                       <CardContent>
                         <div style={{ textAlign: 'center', padding: '8px 0' }}>
-                          <div style={{ marginBottom: 12, color: '#0053e2' }}>
+                          <div style={{ marginBottom: 12, color: '#FFC107' }}>
                             <LivingDesignFontIcon name="Globe" />
                           </div>
                           <div style={{ fontSize: 14, fontWeight: 600, color: '#2e2f32', marginBottom: 4 }}>
@@ -599,7 +599,7 @@ export default function MoneyTransferPage() {
               ].map((item) => (
                 <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14 }}>
                   <span style={{ color: '#74767c' }}>{item.label}</span>
-                  <span style={{ fontWeight: (item as any).bold ? 700 : 500, color: (item as any).bold ? '#0053e2' : '#2e2f32' }}>
+                  <span style={{ fontWeight: (item as any).bold ? 700 : 500, color: (item as any).bold ? '#FFC107' : '#2e2f32' }}>
                     {item.value}
                   </span>
                 </div>

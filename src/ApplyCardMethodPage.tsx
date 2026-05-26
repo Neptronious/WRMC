@@ -41,7 +41,7 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
       {/* ── Top bar ──────────────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '8px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -49,10 +49,10 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
           flexShrink: 0,
         }}
       >
-        <LinkButton type="button" size="medium" color="white" onClick={onDone}>
+        <LinkButton type="button" size="medium" onClick={onDone}>
           Done
         </LinkButton>
-        <IconButton a11yLabel="Refresh application" variant="round" size="medium" color="white">
+        <IconButton a11yLabel="Refresh application" variant="round" size="medium" >
           <LivingDesignFontIcon name="Refresh" />
         </IconButton>
       </div>
@@ -60,7 +60,7 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
       {/* ── Blue title bar ───────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -69,7 +69,7 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
           flexShrink: 0,
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
           Card Application
         </h1>
       </div>
@@ -102,7 +102,7 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
               <div
                 onClick={() => { setMethod('manual'); setShowDigitalError(false); }}
                 style={{
-                  border: `2px solid ${method === 'manual' ? '#0053e2' : '#e5e7eb'}`,
+                  border: `2px solid ${method === 'manual' ? '#FFC107' : '#e5e7eb'}`,
                   borderRadius: 12,
                   padding: '16px 20px',
                   backgroundColor: '#ffffff',
@@ -130,7 +130,7 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
               <div
                 onClick={() => { setMethod('digital'); setShowDigitalError(false); }}
                 style={{
-                  border: `2px solid ${method === 'digital' ? '#0053e2' : '#e5e7eb'}`,
+                  border: `2px solid ${method === 'digital' ? '#FFC107' : '#e5e7eb'}`,
                   borderRadius: 12,
                   padding: '16px 20px',
                   backgroundColor: '#ffffff',

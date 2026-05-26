@@ -63,7 +63,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#ffffff' }}>
 
       {/* ── Header (two rows) ─────────────────────────────────────────────────── */}
-      <div style={{ backgroundColor: '#0053e2', flexShrink: 0 }}>
+      <div style={{ backgroundColor: '#FFC107', flexShrink: 0 }}>
 
         {/* Row 1: back + pill search + cart */}
         <div
@@ -74,7 +74,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             gap: 8,
           }}
         >
-          <IconButton a11yLabel="Go back" variant="round" size="small" color="white" onClick={onBack}>
+          <IconButton a11yLabel="Go back" variant="round" size="small" onClick={onBack}>
             <LivingDesignFontIcon name="ArrowLeft" />
           </IconButton>
 
@@ -97,7 +97,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             </span>
             <input
               type="text"
-              placeholder="Search everything at Walmart"
+              placeholder="Search everything"
               style={{
                 width: '100%',
                 padding: '9px 12px 9px 36px',
@@ -122,7 +122,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              color: '#ffffff',
+              color: '#2e2f32',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -153,7 +153,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             <span
               style={{
                 fontSize: 14,
-                color: '#ffffff',
+                color: '#2e2f32',
                 fontFamily: FONT,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -176,7 +176,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             <span
               style={{
                 fontSize: 14,
-                color: '#ffffff',
+                color: '#2e2f32',
                 fontFamily: FONT,
                 fontWeight: 700,
                 flexShrink: 0,
@@ -187,7 +187,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
           </div>
 
           {/* Right: down chevron */}
-          <span style={{ color: '#ffffff', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
+          <span style={{ color: '#2e2f32', display: 'flex', alignItems: 'center', flexShrink: 0, fontSize: 16 }}>
             <LivingDesignFontIcon name="ChevronDown" />
           </span>
         </div>
@@ -221,7 +221,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
                 textAlign: 'center',
               }}
             >
-              Already an Existing Walmart Rewards Mastercard Member?
+              Already have a Rewards Mastercard?
             </h2>
             <Button variant="secondary" size="medium" onClick={() => openAuth('link')}>
               Link card

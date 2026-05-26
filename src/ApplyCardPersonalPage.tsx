@@ -54,7 +54,7 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
       {/* ── Top bar ──────────────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '8px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -62,10 +62,10 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
           flexShrink: 0,
         }}
       >
-        <LinkButton type="button" size="medium" color="white" onClick={onDone}>
+        <LinkButton type="button" size="medium" onClick={onDone}>
           Done
         </LinkButton>
-        <IconButton a11yLabel="Refresh application" variant="round" size="medium" color="white">
+        <IconButton a11yLabel="Refresh application" variant="round" size="medium" >
           <LivingDesignFontIcon name="Refresh" />
         </IconButton>
       </div>
@@ -73,7 +73,7 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
       {/* ── Blue title bar ───────────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -82,7 +82,7 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
           flexShrink: 0,
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#ffffff', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
           Card Application
         </h1>
       </div>

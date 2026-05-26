@@ -90,12 +90,6 @@ export default function AuthSignInSheet({ isOpen, onClose, onContinue }: AuthSig
             }}
           >
 
-            {/* ── Walmart spark icon ───────────────────────────────────── */}
-            <img
-              src={`${BASE}logos/walmart.png`}
-              alt="Walmart"
-              style={{ width: 56, height: 56, objectFit: 'contain', flexShrink: 0 }}
-            />
 
             {/* ── Heading ──────────────────────────────────────────────── */}
             <h2

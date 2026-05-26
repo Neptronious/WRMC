@@ -40,7 +40,7 @@ const ALL_GROUPS: RewardGroup[] = [
   {
     month: 'Apr 2026',
     transactions: [
-      { id: 'rw-a01', type: 'redeemed', title: 'Redeemed at Walmart.ca',   date: 'Apr 15, 2026', amount: -5.00  },
+      { id: 'rw-a01', type: 'redeemed', title: 'Redeemed at Web store',   date: 'Apr 15, 2026', amount: -5.00  },
       { id: 'rw-a02', type: 'adjusted', title: 'Adjusted – Amazon refund', date: 'Apr 8, 2026',  amount: -2.40  },
       { id: 'rw-a03', type: 'earned',   title: 'March rewards earned',     date: 'Apr 1, 2026',  amount: +18.42 },
     ],
@@ -48,9 +48,9 @@ const ALL_GROUPS: RewardGroup[] = [
   {
     month: 'Mar 2026',
     transactions: [
-      { id: 'rw-m01', type: 'redeemed', title: 'Redeemed at Walmart',        date: 'Mar 22, 2026', amount: -10.00 },
+      { id: 'rw-m01', type: 'redeemed', title: 'Redeemed at Store',        date: 'Mar 22, 2026', amount: -10.00 },
       { id: 'rw-m02', type: 'adjusted', title: 'Adjusted – Shell Gas refund', date: 'Mar 18, 2026', amount: -1.56  },
-      { id: 'rw-m03', type: 'redeemed', title: 'Redeemed at Walmart.ca',     date: 'Mar 9, 2026',  amount: -5.00  },
+      { id: 'rw-m03', type: 'redeemed', title: 'Redeemed at Web store',     date: 'Mar 9, 2026',  amount: -5.00  },
       { id: 'rw-m04', type: 'earned',   title: 'February rewards earned',    date: 'Mar 1, 2026',  amount: +21.87 },
     ],
   },
@@ -58,7 +58,7 @@ const ALL_GROUPS: RewardGroup[] = [
     month: 'Feb 2026',
     transactions: [
       { id: 'rw-f01', type: 'adjusted', title: 'Adjusted – Target refund', date: 'Feb 28, 2026', amount: -1.30  },
-      { id: 'rw-f02', type: 'redeemed', title: 'Redeemed at Walmart',      date: 'Feb 15, 2026', amount: -5.00  },
+      { id: 'rw-f02', type: 'redeemed', title: 'Redeemed at Store',      date: 'Feb 15, 2026', amount: -5.00  },
       { id: 'rw-f03', type: 'earned',   title: 'January rewards earned',   date: 'Feb 1, 2026',  amount: +16.50 },
     ],
   },
@@ -66,22 +66,22 @@ const ALL_GROUPS: RewardGroup[] = [
     month: 'Jan 2026',
     transactions: [
       { id: 'rw-j01', type: 'adjusted', title: 'Adjusted – Starbucks refund', date: 'Jan 20, 2026', amount: -0.20  },
-      { id: 'rw-j02', type: 'redeemed', title: 'Redeemed at Walmart',         date: 'Jan 10, 2026', amount: -10.00 },
+      { id: 'rw-j02', type: 'redeemed', title: 'Redeemed at Store',         date: 'Jan 10, 2026', amount: -10.00 },
       { id: 'rw-j03', type: 'earned',   title: 'December rewards earned',     date: 'Jan 1, 2026',  amount: +22.80 },
     ],
   },
   {
     month: 'Dec 2025',
     transactions: [
-      { id: 'rw-d01', type: 'redeemed', title: 'Redeemed at Walmart',   date: 'Dec 15, 2025', amount: -5.00  },
+      { id: 'rw-d01', type: 'redeemed', title: 'Redeemed at Store',   date: 'Dec 15, 2025', amount: -5.00  },
       { id: 'rw-d02', type: 'earned',   title: 'November rewards earned', date: 'Dec 1, 2025', amount: +14.20 },
     ],
   },
   {
     month: 'Nov 2025',
     transactions: [
-      { id: 'rw-n01', type: 'adjusted', title: 'Adjusted – Walmart refund', date: 'Nov 22, 2025', amount: -2.07 },
-      { id: 'rw-n02', type: 'redeemed', title: 'Redeemed at Walmart.ca',    date: 'Nov 14, 2025', amount: -5.00 },
+      { id: 'rw-n01', type: 'adjusted', title: 'Adjusted – Store refund',   date: 'Nov 22, 2025', amount: -2.07 },
+      { id: 'rw-n02', type: 'redeemed', title: 'Redeemed at Web store',    date: 'Nov 14, 2025', amount: -5.00 },
       { id: 'rw-n03', type: 'earned',   title: 'October rewards earned',    date: 'Nov 1, 2025',  amount: +14.81 },
     ],
   },
@@ -96,11 +96,11 @@ function txIcon(type: RewardType) {
 }
 
 function txIconColor(_type: RewardType): string {
-  return '#0053e2';
+  return '#2e2f32';
 }
 
 function txIconBg(_type: RewardType): string {
-  return '#eff6ff';
+  return '#FFF7BF';
 }
 
 function txAmountColor(amount: number): string {
@@ -141,7 +141,7 @@ export default function RewardsActivityPage({ onBack, onNavSelect }: RewardsActi
       {/* ── Blue header ─────────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -154,7 +154,6 @@ export default function RewardsActivityPage({ onBack, onNavSelect }: RewardsActi
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -167,7 +166,7 @@ export default function RewardsActivityPage({ onBack, onNavSelect }: RewardsActi
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}

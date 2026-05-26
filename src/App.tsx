@@ -79,6 +79,7 @@ export default function App() {
 
       <Route path="/link-card" element={
         <LinkCardPage
+          onBack={() => navigate('/credit-card-promo')}
           onContinue={() => navigate('/verify-phone')}
         />
       } />

@@ -57,7 +57,7 @@ function formatDisplayDate(d: Date): string {
 
 export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
   // ── Amount to pay state ──────────────────────────────────────
-  const [selectedAmount, setSelectedAmount] = useState<AmountOption>('statement');
+  const [selectedAmount, setSelectedAmount] = useState<AmountOption>('minimum');
   const [otherAmount, setOtherAmount] = useState('');
 
   // ── Payment date state ───────────────────────────────────────
@@ -81,7 +81,7 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
       {/* ── Blue header ─────────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -94,7 +94,6 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -107,7 +106,7 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
@@ -256,11 +255,14 @@ export default function PayBillPage({ onBack, onContinue }: PayBillPageProps) {
                         inset: 0,
                         width: '100%',
                         height: '100%',
-                        opacity: 0,
+                        opacity: 0.01,
                         cursor: 'pointer',
                         border: 'none',
                         padding: 0,
                         margin: 0,
+                        zIndex: 2,
+                        fontSize: 16,
+                        boxSizing: 'border-box',
                       }}
                     />
                   </div>

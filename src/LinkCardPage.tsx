@@ -16,7 +16,7 @@ import { useHeaderCartBindings } from './utils/Store';
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const CARD_NUMBER_REGEX = /^\d{16}$/;
-const ZIP_CODE_REGEX = /^\d{6}$/;
+const ZIP_CODE_REGEX = /^[A-Za-z0-9 ]{3,7}$/;
 
 function isValidDate(d: Date | undefined): d is Date {
   return d instanceof Date && !isNaN(d.getTime());
@@ -42,16 +42,17 @@ function formatDateDisplay(d: Date): string {
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 interface LinkCardPageProps {
+  onBack: () => void;
   onContinue: () => void;
 }
 
 // ── LinkCardPage ──────────────────────────────────────────────────────────────
 
-export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
+export default function LinkCardPage({ onBack, onContinue }: LinkCardPageProps) {
   useHeaderCartBindings();
 
   // ── Field values ────────────────────────────────────────────
-  const [cardType, setCardType] = useState('walmart-rewards-mastercard');
+  const [cardType, setCardType] = useState('rewards-mastercard');
   const [cardNumber, setCardNumber] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [dobDate, setDobDate] = useState<Date | undefined>(undefined);
@@ -109,7 +110,7 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
   };
 
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+    const raw = e.target.value.replace(/[^A-Za-z0-9 ]/g, '').slice(0, 7).toUpperCase();
     setZipCode(raw);
     if (zipCodeError) setZipCodeError('');
   };
@@ -135,7 +136,7 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
       {/* ── Blue header bar with back button + centered title ── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -147,8 +148,7 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
-          onClick={() => { /* no-op: home page not yet built */ }}
+          onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
         </IconButton>
@@ -160,7 +160,7 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)',
             whiteSpace: 'nowrap',
           }}
@@ -217,7 +217,7 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
                   value={cardType}
                   onChange={(e) => setCardType(e.target.value)}
                 >
-                  <option value="walmart-rewards-mastercard">Walmart Rewards Mastercard</option>
+                  <option value="rewards-mastercard">Rewards Mastercard</option>
                   <option value="temporary-shopping-pass">Temporary shopping pass</option>
                 </Select>
               </div>
@@ -250,11 +250,11 @@ export default function LinkCardPage({ onContinue }: LinkCardPageProps) {
                 onChange={handleZipCodeChange}
                 onBlur={() => validateZipCode(zipCode)}
                 error={zipCodeError || undefined}
-                helperText={!zipCodeError ? '6-digit postal code' : undefined}
+                helperText={!zipCodeError ? 'e.g. A1A 1A1' : undefined}
                 textFieldProps={{
-                  inputMode: 'numeric',
-                  maxLength: 6,
-                  placeholder: '123456',
+                  inputMode: 'text',
+                  maxLength: 7,
+                  placeholder: 'A1A 1A1',
                   autoComplete: 'postal-code',
                 }}
               />

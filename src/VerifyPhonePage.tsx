@@ -22,7 +22,7 @@ const OTP_LENGTH = 6;
 // ── VerifyPhonePage ───────────────────────────────────────────────────────────
 
 export default function VerifyPhonePage({ onBack, onContinue }: VerifyPhonePageProps) {
-  const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(''));
+  const [otp, setOtp] = useState<string[]>(['1', '2', '3', '4', '5', '6']);
   const inputRefs = useRef<(HTMLInputElement | null)[]>(Array(OTP_LENGTH).fill(null));
 
   // ── OTP handlers ────────────────────────────────────────────
@@ -73,7 +73,7 @@ export default function VerifyPhonePage({ onBack, onContinue }: VerifyPhonePageP
       {/* ── Blue header ─────────────────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -85,7 +85,6 @@ export default function VerifyPhonePage({ onBack, onContinue }: VerifyPhonePageP
           a11yLabel="Go back"
           variant="round"
           size="medium"
-          color="white"
           onClick={onBack}
         >
           <LivingDesignFontIcon name="ArrowLeft" />
@@ -98,7 +97,7 @@ export default function VerifyPhonePage({ onBack, onContinue }: VerifyPhonePageP
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)',
             whiteSpace: 'nowrap',
           }}
@@ -174,16 +173,16 @@ export default function VerifyPhonePage({ onBack, onContinue }: VerifyPhonePageP
                       fontSize: 22,
                       fontWeight: 700,
                       color: '#2e2f32',
-                      border: otp[index] ? '2px solid #0053e2' : '2px solid #c4c6cc',
+                      border: otp[index] ? '2px solid #FFC107' : '2px solid #c4c6cc',
                       borderRadius: 8,
                       outline: 'none',
                       backgroundColor: '#ffffff',
                       fontFamily: 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)',
-                      caretColor: '#0053e2',
+                      caretColor: '#FFC107',
                       transition: 'border-color 0.15s ease',
                     }}
-                    onFocus={(e) => { e.currentTarget.style.borderColor = '#0053e2'; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = otp[index] ? '#0053e2' : '#c4c6cc'; }}
+                    onFocus={(e) => { e.currentTarget.style.borderColor = '#FFC107'; }}
+                    onBlur={(e) => { e.currentTarget.style.borderColor = otp[index] ? '#FFC107' : '#c4c6cc'; }}
                   />
                 ))}
               </div>

@@ -31,7 +31,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
       {/* ── Top bar: Done (left) + Refresh icon (right), no center text ──────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '8px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -42,7 +42,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
         <LinkButton
           type="button"
           size="medium"
-          color="white"
+          
           onClick={onDone}
         >
           Done
@@ -52,7 +52,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
           a11yLabel="Refresh application"
           variant="round"
           size="medium"
-          color="white"
+          
         >
           <LivingDesignFontIcon name="Refresh" />
         </IconButton>
@@ -61,7 +61,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
       {/* ── Blue header bar: centred title, no back button ────────────────────── */}
       <div
         style={{
-          backgroundColor: '#0053e2',
+          backgroundColor: '#FFC107',
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
@@ -75,7 +75,7 @@ export default function ApplyCardPage({ onDone, onContinue }: ApplyCardPageProps
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
-            color: '#ffffff',
+            color: '#2e2f32',
             fontFamily: FONT,
             whiteSpace: 'nowrap',
           }}
