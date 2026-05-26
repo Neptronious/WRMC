@@ -94,12 +94,25 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             </span>
           </div>
 
-          {/* Center — Avenue Mart logo */}
-          <img
-            src={`${BASE}logos/avenuemart.png`}
-            alt="Avenue Mart"
-            style={{ height: 32, width: 'auto', objectFit: 'contain' }}
-          />
+          {/* Center — Avenue Mart logo + wordmark */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <img
+              src={`${BASE}logos/avenuemart2.png`}
+              alt=""
+              style={{ height: 28, width: 'auto', objectFit: 'contain' }}
+            />
+            <span
+              style={{
+                fontFamily: FONT,
+                fontSize: 15,
+                fontWeight: 700,
+                color: '#2e2f32',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Avenue Mart
+            </span>
+          </div>
 
           {/* Right — Cart icon */}
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
