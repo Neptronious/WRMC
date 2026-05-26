@@ -127,7 +127,7 @@ export default function TemporaryShoppingPassPage({ onBack, onActivateCard }: Te
             {/* ── Shopping pass card ────────────────────────────────────────────── */}
             <div
               style={{
-                backgroundColor: '#f5f6f7',
+                backgroundColor: '#d9dadb',
                 borderRadius: 16,
                 padding: 16,
                 display: 'flex',

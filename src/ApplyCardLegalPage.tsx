@@ -10,6 +10,7 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 
 interface ApplyCardLegalPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onSubmit: () => void;
 }
 
@@ -62,7 +63,7 @@ const LEGAL_SECTIONS = [
 
 // ── ApplyCardLegalPage ────────────────────────────────────────────────────────
 
-export default function ApplyCardLegalPage({ onDone, onSubmit }: ApplyCardLegalPageProps) {
+export default function ApplyCardLegalPage({ onDone, onBack, onSubmit }: ApplyCardLegalPageProps) {
   const sectionTitles = LEGAL_SECTIONS.map((s) => s.title);
 
   return (
@@ -94,12 +95,27 @@ export default function ApplyCardLegalPage({ onDone, onSubmit }: ApplyCardLegalP
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>

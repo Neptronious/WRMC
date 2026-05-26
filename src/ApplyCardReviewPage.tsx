@@ -15,6 +15,7 @@ import { type ProfessionData } from './ApplyCardProfessionPage';
 
 interface ApplyCardReviewPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onContinue: () => void;
   onEditEmail: () => void;
   onEditPersonal: () => void;
@@ -98,6 +99,7 @@ function ReviewCard({
 
 export default function ApplyCardReviewPage({
   onDone,
+  onBack,
   onContinue,
   onEditEmail,
   onEditPersonal,
@@ -135,12 +137,27 @@ export default function ApplyCardReviewPage({
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>
@@ -181,8 +198,8 @@ export default function ApplyCardReviewPage({
               onEdit={onEditProfession}
               rows={[
                 { label: 'Employment status', value: formatLabel(professionData.employmentStatus) },
-                { label: 'Industry', value: formatLabel(professionData.industry) },
-                { label: 'Job title', value: formatLabel(professionData.jobTitle) },
+                { label: 'Industry', value: professionData.industry === 'other' ? (professionData.industryOther || 'Other') : formatLabel(professionData.industry) },
+                { label: 'Job title', value: professionData.jobTitle === 'other' ? (professionData.jobTitleOther || 'Other') : formatLabel(professionData.jobTitle) },
                 { label: 'Current employer', value: professionData.employer },
                 { label: 'Annual household income', value: formatLabel(professionData.annualIncome) },
               ]}

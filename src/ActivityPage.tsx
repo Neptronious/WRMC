@@ -166,7 +166,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
     setDateRanges([]);
   };
 
-  // ── Pending checkbox toggle ────────────────────────────────────
+  // ── Pending toggle (checkbox for Category/Type, radio for Date range) ─────
 
   const togglePending = (filter: FilterKey, option: string) => {
     const toggle = (prev: string[]) =>
@@ -174,7 +174,8 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
 
     if (filter === 'Category')   setPendingCategories(toggle);
     if (filter === 'Type')       setPendingTypes(toggle);
-    if (filter === 'Date range') setPendingDateRanges(toggle);
+    // Date range = single-select radio
+    if (filter === 'Date range') setPendingDateRanges([option]);
   };
 
   const getPendingForFilter = (filter: FilterKey): string[] => {
@@ -748,25 +749,54 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '8px 0' }}>
             {FILTER_OPTIONS[filter].map((option) => {
               const pending = getPendingForFilter(filter);
+              const isDateRange = filter === 'Date range';
+              const checked = pending.includes(option);
               return (
                 <div
                   key={option}
-                  style={{
-                    padding: '10px 0',
-                    borderBottom: '1px solid #f0f0f0',
-                  }}
+                  style={{ padding: '10px 0', borderBottom: '1px solid #f0f0f0' }}
                 >
-                  <Checkbox
-                    label={
-                      <span style={{ fontFamily: FONT, fontSize: 15, color: '#2e2f32' }}>
-                        {option}
-                      </span>
-                    }
-                    name={`filter-${filter}`}
-                    value={option}
-                    checked={pending.includes(option)}
-                    onChange={() => togglePending(filter, option)}
-                  />
+                  {isDateRange ? (
+                    <label
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 12,
+                        cursor: 'pointer',
+                        fontFamily: FONT,
+                        fontSize: 15,
+                        color: '#2e2f32',
+                      }}
+                    >
+                      <input
+                        type="radio"
+                        name="date-range-filter"
+                        value={option}
+                        checked={checked}
+                        onChange={() => togglePending(filter, option)}
+                        style={{
+                          width: 18,
+                          height: 18,
+                          accentColor: '#FFC107',
+                          flexShrink: 0,
+                          cursor: 'pointer',
+                        }}
+                      />
+                      {option}
+                    </label>
+                  ) : (
+                    <Checkbox
+                      label={
+                        <span style={{ fontFamily: FONT, fontSize: 15, color: '#2e2f32' }}>
+                          {option}
+                        </span>
+                      }
+                      name={`filter-${filter}`}
+                      value={option}
+                      checked={checked}
+                      onChange={() => togglePending(filter, option)}
+                    />
+                  )}
                 </div>
               );
             })}

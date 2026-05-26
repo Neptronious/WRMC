@@ -13,6 +13,7 @@ import { Link } from './components/ld/Link';
 
 interface ApplyCardEmailPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onContinue: (email: string) => void;
 }
 
@@ -22,7 +23,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── ApplyCardEmailPage ────────────────────────────────────────────────────────
 
-export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmailPageProps) {
+export default function ApplyCardEmailPage({ onDone, onBack, onContinue }: ApplyCardEmailPageProps) {
   const [email, setEmail] = useState('jean122@gmail.com');
   const [emailError] = useState('');
 
@@ -59,12 +60,27 @@ export default function ApplyCardEmailPage({ onDone, onContinue }: ApplyCardEmai
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>

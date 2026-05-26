@@ -55,6 +55,7 @@ export default function App() {
   const [paymentMade, setPaymentMade] = useState(false);
   const [lastPayment, setLastPayment] = useState<{ amount: string; date: string } | null>(null);
   const [reportReason, setReportReason] = useState('I have lost my card');
+  const [showActivationSuccess, setShowActivationSuccess] = useState(false);
 
   // ── Apply card flow state ──────────────────────────────────────────────────
   const [applyEmail, setApplyEmail] = useState('');
@@ -64,7 +65,7 @@ export default function App() {
     address: '2625 Main Street, Charlotte Town, PE, C1A 1P9', housingStatus: 'own',
   });
   const [applyProfession, setApplyProfession] = useState<ProfessionData>({
-    employmentStatus: 'employed', industry: '', jobTitle: '', employer: '', annualIncome: '',
+    employmentStatus: 'employed', industry: '', industryOther: '', jobTitle: '', jobTitleOther: '', employer: '', annualIncome: '',
   });
 
   const handleNavSelect = (key: string) => {
@@ -102,6 +103,7 @@ export default function App() {
           onPayNow={() => navigate('/pay-bill')}
           onNavSelect={handleNavSelect}
           paymentMade={paymentMade}
+          showActivationSuccess={showActivationSuccess}
         />
       } />
 
@@ -170,6 +172,7 @@ export default function App() {
       <Route path="/apply-card/email" element={
         <ApplyCardEmailPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={(email) => { setApplyEmail(email); navigate('/apply-card/method'); }}
         />
       } />
@@ -177,6 +180,7 @@ export default function App() {
       <Route path="/apply-card/method" element={
         <ApplyCardMethodPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={(method) => { setApplyMethod(method); navigate('/apply-card/personal'); }}
         />
       } />
@@ -184,6 +188,7 @@ export default function App() {
       <Route path="/apply-card/personal" element={
         <ApplyCardPersonalPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={(data) => { setApplyPersonal(data); navigate('/apply-card/profession'); }}
         />
       } />
@@ -191,6 +196,7 @@ export default function App() {
       <Route path="/apply-card/profession" element={
         <ApplyCardProfessionPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={(data) => { setApplyProfession(data); navigate('/apply-card/review'); }}
         />
       } />
@@ -198,6 +204,7 @@ export default function App() {
       <Route path="/apply-card/review" element={
         <ApplyCardReviewPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={() => navigate('/apply-card/privacy')}
           onEditEmail={() => navigate('/apply-card/email')}
           onEditPersonal={() => navigate('/apply-card/personal')}
@@ -211,6 +218,7 @@ export default function App() {
       <Route path="/apply-card/privacy" element={
         <ApplyCardPrivacyPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onContinue={() => navigate('/apply-card/legal')}
         />
       } />
@@ -218,6 +226,7 @@ export default function App() {
       <Route path="/apply-card/legal" element={
         <ApplyCardLegalPage
           onDone={() => navigate('/credit-card-promo')}
+          onBack={() => navigate(-1)}
           onSubmit={() => navigate('/apply-card/processing')}
         />
       } />
@@ -245,7 +254,7 @@ export default function App() {
       <Route path="/activate-card" element={
         <ActivateCardPage
           onDone={() => navigate('/apply-card/approved')}
-          onActivated={() => navigate('/credit-card-home')}
+          onActivated={() => { setShowActivationSuccess(true); navigate('/credit-card-home'); }}
         />
       } />
 

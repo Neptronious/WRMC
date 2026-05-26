@@ -26,7 +26,7 @@ export default function PaymentConfirmationPage({ onBack, onNavSelect: _onNavSel
     { label: 'Amount',              value: amount      ?? '$542.30'        },
     { label: 'Date',                value: paymentDate ?? 'Today'          },
     { label: 'Payment method',      value: 'Chase ••••4521'                },
-    { label: 'Confirmation number', value: 'WMT-PAY-284739'               },
+    { label: 'Confirmation number', value: 'AM-PAY-284739'                },
   ];
 
   return (

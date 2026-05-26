@@ -24,6 +24,7 @@ export interface PersonalData {
 
 interface ApplyCardPersonalPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onContinue: (data: PersonalData) => void;
 }
 
@@ -33,7 +34,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── ApplyCardPersonalPage ─────────────────────────────────────────────────────
 
-export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardPersonalPageProps) {
+export default function ApplyCardPersonalPage({ onDone, onBack, onContinue }: ApplyCardPersonalPageProps) {
   const [firstName, setFirstName] = useState('Jean');
   const [lastName, setLastName] = useState('Bernard');
   const [dob, setDob] = useState<Date | undefined>(undefined);
@@ -77,12 +78,27 @@ export default function ApplyCardPersonalPage({ onDone, onContinue }: ApplyCardP
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>

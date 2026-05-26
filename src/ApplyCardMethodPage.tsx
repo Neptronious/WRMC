@@ -13,6 +13,7 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 
 interface ApplyCardMethodPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onContinue: (method: 'digital' | 'manual') => void;
 }
 
@@ -22,7 +23,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── ApplyCardMethodPage ───────────────────────────────────────────────────────
 
-export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMethodPageProps) {
+export default function ApplyCardMethodPage({ onDone, onBack, onContinue }: ApplyCardMethodPageProps) {
   const [method, setMethod] = useState<'digital' | 'manual'>('manual');
   const [showDigitalError, setShowDigitalError] = useState(false);
 
@@ -64,12 +65,27 @@ export default function ApplyCardMethodPage({ onDone, onContinue }: ApplyCardMet
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>

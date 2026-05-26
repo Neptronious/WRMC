@@ -14,13 +14,16 @@ import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 export interface ProfessionData {
   employmentStatus: string;
   industry: string;
+  industryOther: string;
   jobTitle: string;
+  jobTitleOther: string;
   employer: string;
   annualIncome: string;
 }
 
 interface ApplyCardProfessionPageProps {
   onDone: () => void;
+  onBack?: () => void;
   onContinue: (data: ProfessionData) => void;
 }
 
@@ -30,18 +33,23 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── ApplyCardProfessionPage ───────────────────────────────────────────────────
 
-export default function ApplyCardProfessionPage({ onDone, onContinue }: ApplyCardProfessionPageProps) {
+export default function ApplyCardProfessionPage({ onDone, onBack, onContinue }: ApplyCardProfessionPageProps) {
   const [employmentStatus, setEmploymentStatus] = useState('employed');
   const [industry, setIndustry] = useState('');
+  const [industryOther, setIndustryOther] = useState('');
   const [jobTitle, setJobTitle] = useState('');
+  const [jobTitleOther, setJobTitleOther] = useState('');
   const [employer, setEmployer] = useState('');
   const [annualIncome, setAnnualIncome] = useState('');
 
   const handleContinue = () => {
-    onContinue({ employmentStatus, industry, jobTitle, employer, annualIncome });
+    onContinue({ employmentStatus, industry, industryOther, jobTitle, jobTitleOther, employer, annualIncome });
   };
 
-  const isValid = employmentStatus && industry && jobTitle && employer && annualIncome;
+  const isValid =
+    employmentStatus && industry && jobTitle && employer && annualIncome &&
+    (industry !== 'other' || industryOther.trim()) &&
+    (jobTitle !== 'other' || jobTitleOther.trim());
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
@@ -72,12 +80,27 @@ export default function ApplyCardProfessionPage({ onDone, onContinue }: ApplyCar
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#2e2f32', fontFamily: FONT, whiteSpace: 'nowrap' }}>
+        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
+        <h1
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: '#2e2f32',
+            fontFamily: FONT,
+            whiteSpace: 'nowrap',
+          }}
+        >
           Card Application
         </h1>
       </div>
@@ -109,7 +132,7 @@ export default function ApplyCardProfessionPage({ onDone, onContinue }: ApplyCar
             <Select
               label="Industry"
               value={industry}
-              onChange={(e) => setIndustry(e.target.value)}
+              onChange={(e) => { setIndustry(e.target.value); setIndustryOther(''); }}
             >
               <option value="" disabled>Select industry</option>
               <option value="agriculture">Agriculture</option>
@@ -129,11 +152,20 @@ export default function ApplyCardProfessionPage({ onDone, onContinue }: ApplyCar
               <option value="other">Other</option>
             </Select>
 
+            {industry === 'other' && (
+              <TextField
+                label="Please specify your industry"
+                value={industryOther}
+                onChange={(e) => setIndustryOther(e.target.value)}
+                textFieldProps={{ placeholder: 'e.g. Non-profit, Arts, Agriculture...' }}
+              />
+            )}
+
             {/* Job title */}
             <Select
               label="Job title"
               value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
+              onChange={(e) => { setJobTitle(e.target.value); setJobTitleOther(''); }}
             >
               <option value="" disabled>Select job title</option>
               <option value="analyst">Analyst</option>
@@ -150,6 +182,15 @@ export default function ApplyCardProfessionPage({ onDone, onContinue }: ApplyCar
               <option value="technician">Technician</option>
               <option value="other">Other</option>
             </Select>
+
+            {jobTitle === 'other' && (
+              <TextField
+                label="Please specify your job title"
+                value={jobTitleOther}
+                onChange={(e) => setJobTitleOther(e.target.value)}
+                textFieldProps={{ placeholder: 'e.g. Freelancer, Artist, Coach...' }}
+              />
+            )}
 
             {/* Current employer */}
             <TextField
