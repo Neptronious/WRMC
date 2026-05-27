@@ -34,6 +34,7 @@ import TemporaryShoppingPassPage from "./TemporaryShoppingPassPage";
 import ReportLostStolenPage from "./ReportLostStolenPage";
 import ReportLostStolenReviewPage from "./ReportLostStolenReviewPage";
 import ReportLostStolenConfirmationPage from "./ReportLostStolenConfirmationPage";
+import FreshCreditCardHomePage from "./FreshCreditCardHomePage";
 
 // Maps bottom-nav keys to URL paths
 const NAV_PATH_MAP: Record<string, string> = {
@@ -252,7 +253,14 @@ export default function App() {
       <Route path="/activate-card" element={
         <ActivateCardPage
           onDone={() => navigate('/apply-card/approved')}
-          onActivated={() => navigate('/credit-card-home')}
+          onActivated={() => navigate('/fresh-card')}
+        />
+      } />
+
+      <Route path="/fresh-card" element={
+        <FreshCreditCardHomePage
+          onNavSelect={handleNavSelect}
+          onGoToHome={() => navigate('/credit-card-home')}
         />
       } />
 

@@ -80,14 +80,16 @@ const STATEMENT_GROUPS: StatementGroup[] = [
 
 const CATEGORY_OPTIONS = ['Dining out', 'Electronics', 'Entertainment', 'Gas & fuel', 'Groceries', 'Healthcare & wellness', 'Shopping', 'Subscriptions', 'Travel', 'Utilities'];
 const TYPE_OPTIONS     = ['Purchase', 'Refund'];
-const DATE_OPTIONS     = ['Last 7 days', 'Last 30 days', 'Last 3 months', 'Last 6 months'];
+const DATE_OPTIONS     = ['Last 7 days', 'Last 30 days', 'Last 2 months', 'Last 3 months', 'Last 6 months', 'Custom'];
+const PRICE_OPTIONS    = ['$0–$49', '$50–$99', '$100–$249', '$250–$500', '$500+', 'Custom'];
 
-type FilterKey = 'Category' | 'Type' | 'Date range';
+type FilterKey = 'Category' | 'Type' | 'Date range' | 'Price';
 
 const FILTER_OPTIONS: Record<FilterKey, string[]> = {
   'Category':   CATEGORY_OPTIONS,
   'Type':       TYPE_OPTIONS,
   'Date range': DATE_OPTIONS,
+  'Price':      PRICE_OPTIONS,
 };
 
 // ── Date helpers ──────────────────────────────────────────────────────────────
@@ -100,8 +102,10 @@ function getDateCutoff(range: string): Date {
   const d = new Date();
   if (range === 'Last 7 days')   { d.setDate(d.getDate() - 7);    return d; }
   if (range === 'Last 30 days')  { d.setDate(d.getDate() - 30);   return d; }
+  if (range === 'Last 2 months') { d.setMonth(d.getMonth() - 2);  return d; }
   if (range === 'Last 3 months') { d.setMonth(d.getMonth() - 3);  return d; }
   if (range === 'Last 6 months') { d.setMonth(d.getMonth() - 6);  return d; }
+  // 'Custom' and unknown ranges — no cutoff, show all
   return new Date(0);
 }
 
@@ -115,6 +119,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
   const [categories, setCategories]   = useState<string[]>([]);
   const [types, setTypes]             = useState<string[]>([]);
   const [dateRanges, setDateRanges]   = useState<string[]>([]);
+  const [prices, setPrices]           = useState<string[]>([]);
 
   // ── Statement sheet ────────────────────────────────────────────
   const [selectedStatement, setSelectedStatement] = useState<Statement | null>(null);
@@ -128,13 +133,14 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
   }, [successMsg]);
 
   // ── Pending selections while a bottom sheet is open ────────────
-  const [openFilter, setOpenFilter]           = useState<FilterKey | null>(null);
+  const [openFilter, setOpenFilter]               = useState<FilterKey | null>(null);
   const [pendingCategories, setPendingCategories] = useState<string[]>([]);
   const [pendingTypes, setPendingTypes]           = useState<string[]>([]);
   const [pendingDateRanges, setPendingDateRanges] = useState<string[]>([]);
+  const [pendingPrices, setPendingPrices]         = useState<string[]>([]);
 
   // ── Derived ────────────────────────────────────────────────────
-  const anyFilterActive = categories.length > 0 || types.length > 0 || dateRanges.length > 0;
+  const anyFilterActive = categories.length > 0 || types.length > 0 || dateRanges.length > 0 || prices.length > 0;
 
   // ── Sheet helpers ──────────────────────────────────────────────
 
@@ -142,6 +148,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
     setPendingCategories([...categories]);
     setPendingTypes([...types]);
     setPendingDateRanges([...dateRanges]);
+    setPendingPrices([...prices]);
     setOpenFilter(filter);
   };
 
@@ -151,6 +158,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
     setCategories(pendingCategories);
     setTypes(pendingTypes);
     setDateRanges(pendingDateRanges);
+    setPrices(pendingPrices);
     setOpenFilter(null);
   };
 
@@ -158,12 +166,14 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
     if (openFilter === 'Category')   setPendingCategories([]);
     if (openFilter === 'Type')       setPendingTypes([]);
     if (openFilter === 'Date range') setPendingDateRanges([]);
+    if (openFilter === 'Price')      setPendingPrices([]);
   };
 
   const handleClearAll = () => {
     setCategories([]);
     setTypes([]);
     setDateRanges([]);
+    setPrices([]);
   };
 
   // ── Pending toggle (checkbox for Category/Type, radio for Date range) ─────
@@ -172,16 +182,27 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
     const toggle = (prev: string[]) =>
       prev.includes(option) ? prev.filter(o => o !== option) : [...prev, option];
 
-    if (filter === 'Category')   setPendingCategories(toggle);
-    if (filter === 'Type')       setPendingTypes(toggle);
-    // Date range = single-select radio
-    if (filter === 'Date range') setPendingDateRanges([option]);
+    if (filter === 'Category') setPendingCategories(toggle);
+    if (filter === 'Type')     setPendingTypes(toggle);
+
+    // Date range = single-select radio; Custom has no effect
+    if (filter === 'Date range') {
+      if (option === 'Custom') return;
+      setPendingDateRanges([option]);
+    }
+
+    // Price = single-select radio; Custom has no effect
+    if (filter === 'Price') {
+      if (option === 'Custom') return;
+      setPendingPrices([option]);
+    }
   };
 
   const getPendingForFilter = (filter: FilterKey): string[] => {
     if (filter === 'Category')   return pendingCategories;
     if (filter === 'Type')       return pendingTypes;
     if (filter === 'Date range') return pendingDateRanges;
+    if (filter === 'Price')      return pendingPrices;
     return [];
   };
 
@@ -209,6 +230,19 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
         txns = txns.filter(tx => {
           if (tx.status === 'refund') return types.includes('Refund');
           return types.includes('Purchase');
+        });
+      }
+
+      // Price filter — single-select radio; 'Custom' is never stored so always a real range
+      if (prices.length > 0) {
+        const [range] = prices;
+        txns = txns.filter(tx => {
+          if (range === '$0–$49')    return tx.amount >= 0   && tx.amount <  50;
+          if (range === '$50–$99')   return tx.amount >= 50  && tx.amount < 100;
+          if (range === '$100–$249') return tx.amount >= 100 && tx.amount < 250;
+          if (range === '$250–$500') return tx.amount >= 250 && tx.amount <= 500;
+          if (range === '$500+')     return tx.amount >  500;
+          return true;
         });
       }
 
@@ -363,11 +397,12 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
                 alignItems: 'center',
               }}
             >
-              {(['Category', 'Type', 'Date range'] as FilterKey[]).map((filter) => {
+              {(['Category', 'Type', 'Date range', 'Price'] as FilterKey[]).map((filter) => {
                 const count =
                   filter === 'Category'   ? categories.length :
                   filter === 'Type'       ? types.length :
-                  dateRanges.length;
+                  filter === 'Date range' ? dateRanges.length :
+                  prices.length;
                 const isActive = count > 0;
                 return (
                   <button
@@ -696,7 +731,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
       </div>
 
       {/* ── Filter bottom sheets ─────────────────────────────────── */}
-      {(['Category', 'Type', 'Date range'] as FilterKey[]).map((filter) => (
+      {(['Category', 'Type', 'Date range', 'Price'] as FilterKey[]).map((filter) => (
         <BottomSheet
           key={filter}
           isOpen={openFilter === filter}
@@ -749,7 +784,7 @@ export default function ActivityPage({ onBack, onNavSelect }: ActivityPageProps)
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '8px 0' }}>
             {FILTER_OPTIONS[filter].map((option) => {
               const pending = getPendingForFilter(filter);
-              const isDateRange = filter === 'Date range';
+              const isDateRange = filter === 'Date range' || filter === 'Price';
               const checked = pending.includes(option);
               return (
                 <div

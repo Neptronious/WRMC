@@ -14,6 +14,65 @@ export interface TransactionGroup {
 }
 
 export const GROUPED_TRANSACTIONS: TransactionGroup[] = [
+  // ── May 2026 ──────────────────────────────────────────────────────────────────
+  {
+    date: 'May 26, 2026',
+    transactions: [
+      { id: 'AM-3101',  brand: 'Avenue Mart',  category: 'Groceries',     amount: 143.56 },
+    ],
+  },
+  {
+    date: 'May 23, 2026',
+    transactions: [
+      { id: 'NET-3102', brand: 'Netflix',      category: 'Subscriptions', amount: 15.99  },
+    ],
+  },
+  {
+    date: 'May 20, 2026',
+    transactions: [
+      { id: 'SHL-3103', brand: 'Shell Gas',   category: 'Gas & fuel',    amount: 61.40  },
+      { id: 'SBX-3104', brand: 'Starbucks',   category: 'Dining out',    amount: 7.50   },
+    ],
+  },
+  {
+    date: 'May 17, 2026',
+    transactions: [
+      { id: 'AMZ-3105', brand: 'Amazon',       category: 'Shopping',      amount: 234.99 },
+    ],
+  },
+  {
+    date: 'May 13, 2026',
+    transactions: [
+      { id: 'SPT-3106', brand: 'Spotify',      category: 'Entertainment', amount: 14.99  },
+      { id: 'UBR-3107', brand: 'Uber',         category: 'Travel',        amount: 22.80  },
+    ],
+  },
+  {
+    date: 'May 9, 2026',
+    transactions: [
+      { id: 'THN-3108', brand: 'Tim Hortons',  category: 'Dining out',    amount: 9.25   },
+    ],
+  },
+  {
+    date: 'May 5, 2026',
+    transactions: [
+      { id: 'APL-3109', brand: 'Apple',        category: 'Subscriptions', amount: 9.99   },
+      { id: 'AM-3110',  brand: 'Avenue Mart',  category: 'Shopping',      amount: 78.30  },
+    ],
+  },
+  {
+    date: 'May 1, 2026',
+    transactions: [
+      { id: 'MCD-3111', brand: "McDonald's",   category: 'Dining out',    amount: 13.75  },
+    ],
+  },
+  {
+    date: 'Apr 28, 2026',
+    transactions: [
+      { id: 'HDP-3112', brand: 'Home Depot',   category: 'Shopping',      amount: 47.60  },
+    ],
+  },
+
   // ── April 2026 ────────────────────────────────────────────────────────────────
   {
     date: 'Apr 21, 2026',
