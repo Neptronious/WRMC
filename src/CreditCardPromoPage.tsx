@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Button } from './components/ld/Button';
 import { IconButton } from './components/ld/IconButton';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 import AuthSignInSheet from './AuthSignInSheet';
@@ -54,6 +53,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
   // Image paths — header/applyCard/content from credit-card-promo, navbar shared with home
   const BASE = import.meta.env.BASE_URL;
   const images = {
+    linkCard:  `${BASE}credit-card-promo/link-card.png`,
     applyCard: `${BASE}credit-card-promo/apply-card.png`,
     content:   `${BASE}credit-card-promo/content.png`,
     navbar:    `${BASE}walmart-canada/navbar.png`,
@@ -198,34 +198,18 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
       <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 80 }}>
         <div style={{ maxWidth: 600, margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column' }}>
 
-          {/* Already a member section — replaces link card image */}
+          {/* Link Card Image — clickable, opens auth flow */}
           <div
-            style={{
-              padding: '24px 16px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 16,
-              backgroundColor: '#f5f6f7',
-              borderTop: '1px solid #e5e7eb',
-              borderBottom: '1px solid #e5e7eb',
-            }}
+            style={{ width: '100%', cursor: 'pointer' }}
+            onClick={() => openAuth('link')}
+            role="button"
+            aria-label="Link an existing card"
           >
-            <h2
-              style={{
-                margin: 0,
-                fontSize: 24,
-                fontWeight: 700,
-                color: '#2e2f32',
-                fontFamily: 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)',
-                textAlign: 'center',
-              }}
-            >
-              Already have a Rewards Mastercard?
-            </h2>
-            <Button variant="secondary" size="medium" onClick={() => openAuth('link')}>
-              Link card
-            </Button>
+            <img
+              src={images.linkCard}
+              alt="Already have a Rewards Mastercard? Link card"
+              style={{ width: '100%', display: 'block', height: 'auto' }}
+            />
           </div>
 
           {/* Apply Card Image — clickable, opens auth flow first */}
