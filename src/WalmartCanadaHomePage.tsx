@@ -37,6 +37,22 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
     'rewards credit card',
     'rewards card',
     'walmart rewards card',
+    // avenue mart variants
+    'avenue mart rewards',
+    'avenue mart rewards master card',
+    'avenue mart rewards mastercard',
+    'avenue mart rewards credit card',
+    'avenue mart credit card',
+    'avenue mart rewards card',
+    'avenue mart card',
+    // avenuemart variants
+    'avenuemart rewards',
+    'avenuemart rewards master card',
+    'avenuemart rewards mastercard',
+    'avenuemart rewards credit card',
+    'avenuemart credit card',
+    'avenuemart rewards card',
+    'avenuemart card',
   ];
 
   const handleSearch = (query: string) => {
