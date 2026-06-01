@@ -91,13 +91,24 @@ export default function CreditCardHomePage({ onBack: _onBack, onContinue: _onCon
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
+          position: 'relative',
         }}
       >
+        <IconButton
+          a11yLabel="Go back"
+          variant="round"
+          size="medium"
+          onClick={() => {}}
+        >
+          <LivingDesignFontIcon name="ArrowLeft" />
+        </IconButton>
         <h1
           style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
             margin: 0,
             fontSize: 18,
             fontWeight: 700,
