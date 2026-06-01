@@ -78,7 +78,7 @@ const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-sy
 
 // ── CreditCardHomePage ────────────────────────────────────────────────────────
 
-export default function CreditCardHomePage({ onBack, onContinue: _onContinue, onPayNow, onNavSelect, paymentMade = false }: CreditCardHomePageProps) {
+export default function CreditCardHomePage({ onBack: _onBack, onContinue: _onContinue, onPayNow, onNavSelect, paymentMade = false }: CreditCardHomePageProps) {
   const summary = paymentMade ? POST_PAYMENT : PRE_PAYMENT;
 
   return (
@@ -91,24 +91,13 @@ export default function CreditCardHomePage({ onBack, onContinue: _onContinue, on
           padding: '0 16px',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           minHeight: 56,
           flexShrink: 0,
-          position: 'relative',
         }}
       >
-        <IconButton
-          a11yLabel="Go back"
-          variant="round"
-          size="medium"
-          onClick={onBack}
-        >
-          <LivingDesignFontIcon name="ArrowLeft" />
-        </IconButton>
         <h1
           style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
             margin: 0,
             fontSize: 18,
             fontWeight: 700,

@@ -55,6 +55,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
   const images = {
     linkCard:  `${BASE}credit-card-promo/link-card.png`,
     applyCard: `${BASE}credit-card-promo/apply-card.png`,
+    apply2:    `${BASE}credit-card-promo/apply2.png`,
     content:   `${BASE}credit-card-promo/content.png`,
     navbar:    `${BASE}walmart-canada/navbar.png`,
   };
@@ -231,6 +232,20 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             <img
               src={images.content}
               alt="Credit Card Content"
+              style={{ width: '100%', display: 'block', height: 'auto' }}
+            />
+          </div>
+
+          {/* Apply 2 banner — additional apply CTA at bottom */}
+          <div
+            style={{ width: '100%', cursor: 'pointer' }}
+            onClick={() => openAuth('apply')}
+            role="button"
+            aria-label="Apply for a card"
+          >
+            <img
+              src={images.apply2}
+              alt="Apply for a Rewards Mastercard"
               style={{ width: '100%', display: 'block', height: 'auto' }}
             />
           </div>

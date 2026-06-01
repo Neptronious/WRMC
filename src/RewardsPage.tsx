@@ -221,7 +221,7 @@ export default function RewardsPage({ onBack, onNavSelect, onViewAll }: RewardsP
                   ${REWARDS_BALANCE.toFixed(2)}
                 </h2>
                 <p style={{ margin: 0, fontSize: 13, color: '#2e2f32', fontFamily: FONT }}>
-                  ready to use in-store
+                  ready to use in-store and online at Avenue Mart
                 </p>
               </div>
 
