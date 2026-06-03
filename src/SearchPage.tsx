@@ -194,7 +194,7 @@ export default function SearchPage({ onNavSelect, onPromoClick }: SearchPageProp
                       bottom: 6,
                       right: 6,
                       fontSize: 30,
-                      color: '#0071CE',
+                      color: '#2e2f32',
                       opacity: 0.25,
                       display: 'flex',
                       alignItems: 'center',

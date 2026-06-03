@@ -83,7 +83,7 @@ export default function HomeBottomNav({ active, onSelect }: HomeBottomNavProps) 
                 style={{
                   fontSize: 11,
                   fontFamily: FONT,
-                  color: isActive ? '#0071CE' : '#74767c',
+                  color: isActive ? '#2e2f32' : '#74767c',
                   fontWeight: isActive ? 600 : 400,
                 }}
               >

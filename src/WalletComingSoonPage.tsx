@@ -80,23 +80,6 @@ export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComi
           paddingBottom: 80,
         }}
       >
-        <div
-          style={{
-            width: 72,
-            height: 72,
-            borderRadius: '50%',
-            backgroundColor: '#FFF7BF',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 36,
-            color: '#FFC107',
-            marginBottom: 8,
-          }}
-        >
-          <LivingDesignFontIcon name="Wallet" />
-        </div>
-
         <h2
           style={{
             margin: 0,
@@ -109,20 +92,6 @@ export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComi
         >
           We're building something great
         </h2>
-
-        <p
-          style={{
-            margin: 0,
-            fontSize: 15,
-            color: '#74767c',
-            fontFamily: FONT,
-            textAlign: 'center',
-            lineHeight: 1.5,
-            maxWidth: 300,
-          }}
-        >
-          Your wallet feature is currently being built. Check back soon!
-        </p>
 
         <div style={{ marginTop: 8 }}>
           <Button variant="primary" size="medium" onClick={onBack}>
