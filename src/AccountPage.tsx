@@ -222,7 +222,7 @@ export default function AccountPage({ onNavSelect, onWallet }: AccountPageProps)
           {/* ── Greeting + QR code ─────────────────────────────── */}
           <div
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: '#FFC107',
               padding: '40px 24px 32px',
               textAlign: 'center',
               display: 'flex',

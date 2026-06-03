@@ -48,6 +48,7 @@ const NAV_PATH_MAP: Record<string, string> = {
   'account':     '/account',
   'search':      '/search',
   'shop':        '/',
+  'savings':     '/wallet-wip',
 };
 
 export default function App() {

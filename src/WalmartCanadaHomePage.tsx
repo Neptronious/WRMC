@@ -93,22 +93,17 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
             justifyContent: 'space-between',
           }}
         >
-          {/* Left — Profile icon + Sign in */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#2e2f32', fontSize: 22, display: 'flex', alignItems: 'center' }}>
-              <LivingDesignFontIcon name="UserCircle" />
-            </span>
-            <span
-              style={{
-                color: '#2e2f32',
-                fontFamily: FONT,
-                fontSize: 14,
-                fontWeight: 600,
-              }}
-            >
-              Sign in
-            </span>
-          </div>
+          {/* Left — Greeting */}
+          <span
+            style={{
+              color: '#2e2f32',
+              fontFamily: FONT,
+              fontSize: 15,
+              fontWeight: 700,
+            }}
+          >
+            Hi Jean
+          </span>
 
           {/* Center — Avenue Mart logo */}
           <img

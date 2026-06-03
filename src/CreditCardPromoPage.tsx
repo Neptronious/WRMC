@@ -4,6 +4,7 @@ import { IconButton } from './components/ld/IconButton';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 import AuthSignInSheet from './AuthSignInSheet';
 import AuthPasswordSheet from './AuthPasswordSheet';
+import HomeBottomNav from './HomeBottomNav';
 
 const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)';
 
@@ -57,7 +58,6 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
     applyCard: `${BASE}credit-card-promo/apply-card.png`,
     apply2:    `${BASE}credit-card-promo/apply2.png`,
     content:   `${BASE}credit-card-promo/content.png`,
-    navbar:    `${BASE}walmart-canada/navbar.png`,
   };
 
   return (
@@ -253,24 +253,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
         </div>
       </div>
 
-      {/* ── Sticky Bottom Navigation Bar Image (shared with home page) ───────── */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-        }}
-      >
-        <div style={{ maxWidth: 600, margin: '0 auto', width: '100%' }}>
-          <img
-            src={images.navbar}
-            alt="Navigation Bar"
-            style={{ width: '100%', display: 'block', height: 'auto' }}
-          />
-        </div>
-      </div>
+      <HomeBottomNav active="shop" onSelect={handleNavClick} />
 
       {/* ── Auth sheets (hidden — kept for future use) ─────────────────────── */}
       <AuthSignInSheet
