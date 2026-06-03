@@ -38,6 +38,7 @@ import FreshCreditCardHomePage from "./FreshCreditCardHomePage";
 import AccountPage from "./AccountPage";
 import SearchPage from "./SearchPage";
 import WalletComingSoonPage from "./WalletComingSoonPage";
+import SavingsComingSoonPage from "./SavingsComingSoonPage";
 
 // Maps bottom-nav keys to URL paths
 const NAV_PATH_MAP: Record<string, string> = {
@@ -48,7 +49,7 @@ const NAV_PATH_MAP: Record<string, string> = {
   'account':     '/account',
   'search':      '/search',
   'shop':        '/',
-  'savings':     '/wallet-wip',
+  'savings':     '/savings-wip',
 };
 
 export default function App() {
@@ -288,6 +289,13 @@ export default function App() {
       <Route path="/wallet-wip" element={
         <WalletComingSoonPage
           onBack={() => navigate('/')}
+          onNavSelect={handleNavSelect}
+        />
+      } />
+
+      <Route path="/savings-wip" element={
+        <SavingsComingSoonPage
+          onGoHome={() => navigate('/')}
           onNavSelect={handleNavSelect}
         />
       } />

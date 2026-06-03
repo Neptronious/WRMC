@@ -5,22 +5,18 @@ import HomeBottomNav from './HomeBottomNav';
 
 const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)';
 
-interface WalletComingSoonPageProps {
-  onBack: () => void;
-  onNavSelect?: (key: string) => void;
+interface SavingsComingSoonPageProps {
+  onGoHome: () => void;
+  onNavSelect: (key: string) => void;
 }
 
-export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComingSoonPageProps) {
+export default function SavingsComingSoonPage({ onGoHome, onNavSelect }: SavingsComingSoonPageProps) {
   const [query, setQuery] = React.useState('');
-
-  const handleNavSelect = (key: string) => {
-    if (onNavSelect) onNavSelect(key);
-  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
-      {/* ── Header — same as SearchPage ─────────────────────────── */}
+      {/* ── Header — search bar ─────────────────────────── */}
       <div style={{ backgroundColor: '#FFC107', flexShrink: 0 }}>
         <div style={{ maxWidth: 600, margin: '0 auto', padding: '10px 16px 12px' }}>
           <div
@@ -67,7 +63,7 @@ export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComi
         </div>
       </div>
 
-      {/* ── Body ──────────────────────────────────────────────────── */}
+      {/* ── Body ──────────────────────────────────────────── */}
       <div
         style={{
           flex: 1,
@@ -94,13 +90,13 @@ export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComi
         </h2>
 
         <div style={{ marginTop: 8 }}>
-          <Button variant="primary" size="medium" onClick={onBack}>
+          <Button variant="primary" size="medium" onClick={onGoHome}>
             Go to home
           </Button>
         </div>
       </div>
 
-      <HomeBottomNav active="account" onSelect={handleNavSelect} />
+      <HomeBottomNav active="savings" onSelect={onNavSelect} />
     </div>
   );
 }
