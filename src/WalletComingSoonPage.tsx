@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from './components/ld/Button';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
 import HomeBottomNav from './HomeBottomNav';
 
@@ -122,6 +123,12 @@ export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComi
         >
           Your wallet feature is currently being built. Check back soon!
         </p>
+
+        <div style={{ marginTop: 8 }}>
+          <Button variant="primary" size="medium" onClick={onBack}>
+            Go to home
+          </Button>
+        </div>
       </div>
 
       <HomeBottomNav active="savings" onSelect={handleNavSelect} />

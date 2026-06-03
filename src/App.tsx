@@ -287,7 +287,7 @@ export default function App() {
 
       <Route path="/wallet-wip" element={
         <WalletComingSoonPage
-          onBack={() => navigate('/account')}
+          onBack={() => navigate('/')}
           onNavSelect={handleNavSelect}
         />
       } />
