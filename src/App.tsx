@@ -35,6 +35,9 @@ import ReportLostStolenPage from "./ReportLostStolenPage";
 import ReportLostStolenReviewPage from "./ReportLostStolenReviewPage";
 import ReportLostStolenConfirmationPage from "./ReportLostStolenConfirmationPage";
 import FreshCreditCardHomePage from "./FreshCreditCardHomePage";
+import AccountPage from "./AccountPage";
+import SearchPage from "./SearchPage";
+import WalletComingSoonPage from "./WalletComingSoonPage";
 
 // Maps bottom-nav keys to URL paths
 const NAV_PATH_MAP: Record<string, string> = {
@@ -42,6 +45,9 @@ const NAV_PATH_MAP: Record<string, string> = {
   'activity':    '/activity',
   'rewards':     '/rewards',
   'manage':      '/manage',
+  'account':     '/account',
+  'search':      '/search',
+  'shop':        '/',
 };
 
 export default function App() {
@@ -261,6 +267,26 @@ export default function App() {
         <FreshCreditCardHomePage
           onNavSelect={handleNavSelect}
           onGoToHome={() => navigate('/credit-card-home')}
+        />
+      } />
+
+      <Route path="/account" element={
+        <AccountPage
+          onNavSelect={handleNavSelect}
+          onWallet={() => navigate('/wallet-wip')}
+        />
+      } />
+
+      <Route path="/search" element={
+        <SearchPage
+          onNavSelect={handleNavSelect}
+          onPromoClick={() => navigate('/credit-card-promo')}
+        />
+      } />
+
+      <Route path="/wallet-wip" element={
+        <WalletComingSoonPage
+          onBack={() => navigate('/account')}
         />
       } />
 

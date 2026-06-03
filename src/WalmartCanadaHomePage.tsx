@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
+import HomeBottomNav from './HomeBottomNav';
 
 interface WalmartCanadaHomePageProps {
   onNavSelect?: (key: string) => void;
@@ -74,7 +75,6 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
     header: `${BASE}walmart-canada/header.png`,
     promotional: `${BASE}walmart-canada/promotional.png`,
     rewards: `${BASE}walmart-canada/rewards.png`,
-    navbar: `${BASE}walmart-canada/navbar.png`,
   };
 
   return (
@@ -276,24 +276,7 @@ export default function WalmartCanadaHomePage({ onNavSelect, onPromoClick }: Wal
         </div>
       </div>
 
-      {/* ── Sticky Bottom Navigation Bar Image ───────────────────────────────── */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-        }}
-      >
-        <div style={{ maxWidth: 600, margin: '0 auto', width: '100%' }}>
-          <img
-            src={images.navbar}
-            alt="Navigation Bar"
-            style={{ width: '100%', display: 'block', height: 'auto' }}
-          />
-        </div>
-      </div>
+      <HomeBottomNav active="shop" onSelect={handleNavClick} />
     </div>
   );
 }

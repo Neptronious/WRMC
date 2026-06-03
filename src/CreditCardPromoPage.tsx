@@ -199,10 +199,10 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
       <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 80 }}>
         <div style={{ maxWidth: 600, margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column' }}>
 
-          {/* Link Card Image — clickable, opens auth flow */}
+          {/* Link Card Image — clickable, goes directly to link flow */}
           <div
             style={{ width: '100%', cursor: 'pointer' }}
-            onClick={() => openAuth('link')}
+            onClick={onLinkCard}
             role="button"
             aria-label="Link an existing card"
           >
@@ -213,10 +213,10 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
             />
           </div>
 
-          {/* Apply Card Image — clickable, opens auth flow first */}
+          {/* Apply Card Image — clickable, goes directly to apply flow */}
           <div
             style={{ width: '100%', cursor: 'pointer' }}
-            onClick={() => openAuth('apply')}
+            onClick={onApplyCard}
             role="button"
             aria-label="Apply for a card"
           >
@@ -239,7 +239,7 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
           {/* Apply 2 banner — additional apply CTA at bottom */}
           <div
             style={{ width: '100%', cursor: 'pointer' }}
-            onClick={() => openAuth('apply')}
+            onClick={onApplyCard}
             role="button"
             aria-label="Apply for a card"
           >
@@ -272,14 +272,14 @@ export default function CreditCardPromoPage({ onBack, onNavSelect, onLinkCard, o
         </div>
       </div>
 
-      {/* ── Auth sheets ───────────────────────────────────────────────────── */}
+      {/* ── Auth sheets (hidden — kept for future use) ─────────────────────── */}
       <AuthSignInSheet
-        isOpen={authStep === 'sign-in'}
+        isOpen={false}
         onClose={closeAuth}
         onContinue={handleSignInContinue}
       />
       <AuthPasswordSheet
-        isOpen={authStep === 'password'}
+        isOpen={false}
         onClose={closeAuth}
         onContinue={handlePasswordContinue}
         email={authEmail || 'jean122@gmail.com'}
