@@ -1,51 +1,72 @@
 import * as React from 'react';
-import { Button } from './components/ld/Button';
 import { LivingDesignFontIcon } from './components/ld/LivingDesignIconsFont';
-import { IconButton } from './components/ld/IconButton';
+import HomeBottomNav from './HomeBottomNav';
 
 const FONT = 'var(--ld-primitive-font-family-sans, "Everyday Sans UI", -apple-system, Roboto, sans-serif)';
 
 interface WalletComingSoonPageProps {
   onBack: () => void;
+  onNavSelect?: (key: string) => void;
 }
 
-export default function WalletComingSoonPage({ onBack }: WalletComingSoonPageProps) {
+export default function WalletComingSoonPage({ onBack, onNavSelect }: WalletComingSoonPageProps) {
+  const [query, setQuery] = React.useState('');
+
+  const handleNavSelect = (key: string) => {
+    if (onNavSelect) onNavSelect(key);
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#ffffff' }}>
 
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <div
-        style={{
-          backgroundColor: '#FFC107',
-          padding: '0 16px',
-          display: 'flex',
-          alignItems: 'center',
-          minHeight: 56,
-          flexShrink: 0,
-          position: 'relative',
-        }}
-      >
-        <IconButton a11yLabel="Go back" variant="round" size="medium" onClick={onBack}>
-          <LivingDesignFontIcon name="ArrowLeft" />
-        </IconButton>
-        <h1
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            margin: 0,
-            fontSize: 18,
-            fontWeight: 700,
-            color: '#2e2f32',
-            fontFamily: FONT,
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Wallet
-        </h1>
+      {/* ── Header — same as SearchPage ─────────────────────────── */}
+      <div style={{ backgroundColor: '#FFC107', flexShrink: 0 }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', padding: '10px 16px 12px' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              backgroundColor: '#ffffff',
+              borderRadius: 9999,
+              padding: '8px 14px',
+              gap: 8,
+            }}
+          >
+            <span style={{ display: 'flex', alignItems: 'center', color: '#74767c', flexShrink: 0, fontSize: 18 }}>
+              <LivingDesignFontIcon name="Search" />
+            </span>
+            <input
+              type="text"
+              placeholder="Search everything"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              style={{
+                flex: 1,
+                border: 'none',
+                outline: 'none',
+                background: 'transparent',
+                fontFamily: FONT,
+                fontSize: 14,
+                color: '#2e2f32',
+                lineHeight: 1.4,
+              }}
+            />
+            {query.length > 0 && (
+              <button
+                onClick={() => setQuery('')}
+                style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#74767c', fontSize: 18 }}
+              >
+                <LivingDesignFontIcon name="Close" />
+              </button>
+            )}
+            <span style={{ display: 'flex', alignItems: 'center', color: '#74767c', flexShrink: 0, fontSize: 18 }}>
+              <LivingDesignFontIcon name="Barcode" />
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* ── Body ──────────────────────────────────────────────── */}
+      {/* ── Body ──────────────────────────────────────────────────── */}
       <div
         style={{
           flex: 1,
@@ -55,6 +76,7 @@ export default function WalletComingSoonPage({ onBack }: WalletComingSoonPagePro
           justifyContent: 'center',
           padding: '32px 24px',
           gap: 16,
+          paddingBottom: 80,
         }}
       >
         <div
@@ -100,14 +122,9 @@ export default function WalletComingSoonPage({ onBack }: WalletComingSoonPagePro
         >
           Your wallet feature is currently being built. Check back soon!
         </p>
-
-        <div style={{ marginTop: 8 }}>
-          <Button variant="primary" size="medium" onClick={onBack}>
-            Go back
-          </Button>
-        </div>
       </div>
 
+      <HomeBottomNav active="savings" onSelect={handleNavSelect} />
     </div>
   );
 }

@@ -19,8 +19,9 @@ function QRCode() {
       width="130"
       height="130"
       viewBox="0 0 210 210"
-      style={{ display: 'block', border: '8px solid #000', borderRadius: 4 }}
+      style={{ display: 'block', border: '8px solid #000', borderRadius: 4, backgroundColor: '#ffffff' }}
     >
+      <rect x="0" y="0" width="210" height="210" fill="#ffffff" />
       {/* Top-left finder */}
       <rect x="10" y="10" width="60" height="60" fill="#000" />
       <rect x="20" y="20" width="40" height="40" fill="#fff" />
@@ -249,7 +250,7 @@ export default function AccountPage({ onNavSelect, onWallet }: AccountPageProps)
                   margin: 0,
                   fontSize: 12,
                   fontWeight: 600,
-                  color: '#74767c',
+                  color: '#2e2f32',
                   fontFamily: FONT,
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px',
@@ -262,7 +263,7 @@ export default function AccountPage({ onNavSelect, onWallet }: AccountPageProps)
                 style={{
                   margin: 0,
                   fontSize: 13,
-                  color: '#74767c',
+                  color: '#2e2f32',
                   fontFamily: FONT,
                   letterSpacing: '1px',
                 }}

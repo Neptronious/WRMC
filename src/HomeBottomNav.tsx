@@ -46,7 +46,7 @@ export default function HomeBottomNav({ active, onSelect }: HomeBottomNavProps) 
                 gap: 3,
                 padding: '10px 0 12px',
                 border: 'none',
-                borderTop: `2.5px solid ${isActive ? '#0071CE' : 'transparent'}`,
+                borderTop: `2.5px solid ${isActive ? '#FFC107' : 'transparent'}`,
                 background: 'none',
                 cursor: 'pointer',
               }}
@@ -57,12 +57,12 @@ export default function HomeBottomNav({ active, onSelect }: HomeBottomNavProps) 
                     width: 36,
                     height: 36,
                     borderRadius: '50%',
-                    backgroundColor: isActive ? '#0071CE' : '#f3f4f6',
+                    backgroundColor: isActive ? '#FFC107' : '#f3f4f6',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: 20,
-                    color: isActive ? '#ffffff' : '#74767c',
+                    color: isActive ? '#2e2f32' : '#74767c',
                   }}
                 >
                   <LivingDesignFontIcon name={item.icon} />
@@ -71,7 +71,7 @@ export default function HomeBottomNav({ active, onSelect }: HomeBottomNavProps) 
                 <span
                   style={{
                     fontSize: 22,
-                    color: isActive ? '#0071CE' : '#74767c',
+                    color: isActive ? '#2e2f32' : '#74767c',
                     display: 'flex',
                     alignItems: 'center',
                   }}

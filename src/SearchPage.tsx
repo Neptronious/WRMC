@@ -180,7 +180,7 @@ export default function SearchPage({ onNavSelect, onPromoClick }: SearchPageProp
                     display: 'block',
                     fontSize: 13,
                     fontWeight: 700,
-                    color: '#0071CE',
+                    color: '#2e2f32',
                     fontFamily: FONT,
                     lineHeight: 1.3,
                   }}
